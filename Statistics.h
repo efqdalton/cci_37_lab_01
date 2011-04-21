@@ -56,6 +56,54 @@ public:
         return U;
     }
 
+//  Normal generates a normalized normal random number
+// using the polar method N(0,1) (avg = 0 std_dev=1)
+    double Normal() {
+        double Y,W,V1,V2;
+
+        do {
+            V1=2*Random()-1;
+            V2=2*Random()-1;
+            W = V1*V1+V2*V2;
+            if (W<1.0) {
+                Y=sqrt(-2*log(W)/W);
+                V1*=Y;
+                V2*=Y;
+            }
+        } while (W>1.0);
+        U=V1;
+        return U;
+    }
+
+// Normal generates normal distribution variates with average avg
+//	and standard deviation std_dev
+    double Normal(double avg, double std_dev) {
+        U= avg+std_dev*Normal();
+        return U;
+    }
+// Normal generates a normal dist number cuttted by lim_inf and lim_sup
+    double  NormalLimited(double avg, double std_dev,
+                          double lim_inf,double lim_sup) {
+        int n=0;
+        double U;
+        do {
+            n++;
+            U=Normal(avg, std_dev);
+            if (n>100) { // try 100 times
+                break;
+            }
+        } while (U<lim_inf || U>lim_sup);
+        if (n<100) {
+            return U;
+        }
+        if (U<lim_inf) {
+            U=lim_inf;
+        } else {
+            U=lim_sup;
+        }
+        return U;
+    }
+
 };
 
 //--------------------------------------------------------------------
