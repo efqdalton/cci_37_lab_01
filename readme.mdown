@@ -301,20 +301,20 @@ Os resultados resumidos de cada período são dados pelas tabelas a seguir:
     <th>Valor Máximo</th>
   </tr>
   <tr>
-    <td>call wait</td>
-    <td>24255</td>
-    <td>6.208387</td>
-    <td>4.777759</td>
-    <td>0.000000</td>
-    <td>34.377662</td>
+    <td>atm duration</td>
+    <td>33922</td>
+    <td>4.137965</td>
+    <td>1.864010</td>
+    <td>0.201759</td>
+    <td>12.181896</td>
   </tr>
   <tr>
-    <td>call in system</td>
-    <td>18740</td>
-    <td>9.696642</td>
-    <td>4.124551</td>
-    <td>1.003388</td>
-    <td>19.755275</td>
+    <td>atm wait</td>
+    <td>33923</td>
+    <td>3.465512</td>
+    <td>5.026479</td>
+    <td>0.000000</td>
+    <td>42.662593</td>
   </tr>
   <tr>
     <td>call duration</td>
@@ -325,20 +325,28 @@ Os resultados resumidos de cada período são dados pelas tabelas a seguir:
     <td>9.998804</td>
   </tr>
   <tr>
+    <td>call in system</td>
+    <td>18740</td>
+    <td>9.696642</td>
+    <td>4.124551</td>
+    <td>1.003388</td>
+    <td>19.755275</td>
+  </tr>
+  <tr>
+    <td>call wait</td>
+    <td>24255</td>
+    <td>6.208387</td>
+    <td>4.777759</td>
+    <td>0.000000</td>
+    <td>34.377662</td>
+  </tr>
+  <tr>
     <td>calls attended</td>
     <td>24255</td>
     <td>0.772665</td>
     <td>0.419119</td>
     <td>0.000000</td>
     <td>1.000000</td>
-  </tr>
-  <tr>
-    <td>client wait</td>
-    <td>58698</td>
-    <td>9.529119</td>
-    <td>23.746118</td>
-    <td>0.000000</td>
-    <td>310.274037</td>
   </tr>
   <tr>
     <td>client in system</td>
@@ -349,10 +357,10 @@ Os resultados resumidos de cada período são dados pelas tabelas a seguir:
     <td>331.357688</td>
   </tr>
   <tr>
-    <td>manager wait</td>
-    <td>9808</td>
-    <td>40.306494</td>
-    <td>45.905201</td>
+    <td>client wait</td>
+    <td>58698</td>
+    <td>9.529119</td>
+    <td>23.746118</td>
     <td>0.000000</td>
     <td>310.274037</td>
   </tr>
@@ -365,12 +373,12 @@ Os resultados resumidos de cada período são dados pelas tabelas a seguir:
     <td>26.832446</td>
   </tr>
   <tr>
-    <td>teller wait</td>
-    <td>14967</td>
-    <td>3.103734</td>
-    <td>5.290912</td>
+    <td>manager wait</td>
+    <td>9808</td>
+    <td>40.306494</td>
+    <td>45.905201</td>
     <td>0.000000</td>
-    <td>44.117299</td>
+    <td>310.274037</td>
   </tr>
   <tr>
     <td>teller duration</td>
@@ -381,20 +389,12 @@ Os resultados resumidos de cada período são dados pelas tabelas a seguir:
     <td>19.112613</td>
   </tr>
   <tr>
-    <td>atm wait</td>
-    <td>33923</td>
-    <td>3.465512</td>
-    <td>5.026479</td>
+    <td>teller wait</td>
+    <td>14967</td>
+    <td>3.103734</td>
+    <td>5.290912</td>
     <td>0.000000</td>
-    <td>42.662593</td>
-  </tr>
-  <tr>
-    <td>atm duration</td>
-    <td>33922</td>
-    <td>4.137965</td>
-    <td>1.864010</td>
-    <td>0.201759</td>
-    <td>12.181896</td>
+    <td>44.117299</td>
   </tr>
 </table>
 
