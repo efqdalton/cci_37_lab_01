@@ -124,14 +124,21 @@ double sim_time;
 double call_arrival, arrival_mean, arrival_manager_prob, arrival_teller_prob, atm_service_mean, atm_service_stddev, teller_service_mean, teller_service_stddev, manager_service_mean, manager_service_stddev, atm_to_teller_prob, atm_to_manager_prob, min_service, max_service, min_call, max_call, call_max_wait;
 
 // Statistical repository
-CStatistics client_wait(     "output/ClientWait.txt",      ADD_FILE),
-            call_wait(       "output/CallWait.txt",        ADD_FILE),
-            call_system(     "output/CallSystem.txt",      ADD_FILE),
-            call_duration(   "output/CallDuration.txt",    ADD_FILE),
-            client_system(   "output/ClientSystem.txt",    ADD_FILE),
-            manager_duration("output/ManagerDuration.txt", ADD_FILE),
-            teller_system(   "output/TellerSystem.txt",    ADD_FILE),
-            teller_duration( "output/TellerDuration.txt",  ADD_FILE);
+CStatistics call_wait(        "output/CallWait.txt",        ADD_FILE ),
+            call_system(      "output/CallSystem.txt",      ADD_FILE ),
+            call_duration(    "output/CallDuration.txt",    ADD_FILE ),
+
+            client_wait(      "output/ClientWait.txt",      ADD_FILE ),
+            client_system(    "output/ClientSystem.txt",    ADD_FILE ),
+
+            manager_wait(     "output/ManagerWait.txt",     ADD_FILE ),
+            manager_duration( "output/ManagerDuration.txt", ADD_FILE ),
+
+            teller_wait(      "output/TellerWait.txt",      ADD_FILE ),
+            teller_duration(  "output/TellerDuration.txt",  ADD_FILE ),
+
+            atm_wait(         "output/ATMWait.txt",         ADD_FILE ),
+            atm_duration(     "output/ATMDuration.txt",     ADD_FILE );
 
 
 void CBank::ArriveClient()  // Arrival activity handling
@@ -144,6 +151,7 @@ void CBank::ArriveClient()  // Arrival activity handling
 
         // Current client arrival
         entity->arrive = time;
+        entity->start  = time;
         if(_DEBUG_) printf("Client Arrives %f \n", time);
 
         // Next client arrival time calculation
@@ -156,9 +164,7 @@ void CBank::ArriveClient()  // Arrival activity handling
         // decide where the client goes
         double r = dist.Random();
         if(r < arrival_teller_prob){
-            // // Gambiarra
-            // teller_queue->InserirFim(entity);
-            manager_queue->InserirFim(entity);
+            teller_queue->InserirFim(entity);
         }else if(r < arrival_teller_prob + arrival_manager_prob){
             manager_queue->InserirFim(entity);
         }else{
@@ -182,10 +188,12 @@ void CBank::StartManager()  // service Start handling
             client = (CEntity*) manager_queue->ObterInfo();
             manager_queue->Remover();
             client->SetActivity(ENDMANAGER);
-            client->start=time;
 
             // Collect statistics on client waiting
-            client_wait.Add(client->start-client->arrive);
+            client_wait.Add(time - client->start);
+            manager_wait.Add(time - client->start);
+            client->start = time;
+
             if(_DEBUG_) printf("Service Starts %f \n", time);
 
             // Calculate service ending time
@@ -203,11 +211,11 @@ void CBank::EndManager()  // service End handling
 
     if (activity == ENDMANAGER && time == sim_time) {
         if(_DEBUG_) printf("Service Ends %f \n", time);
-        entity->end = time;
 
         // Statistical storage of client time in system ans service duration
-        client_system.Add(entity->end - entity->arrive);
-        manager_duration.Add(entity->end - entity->start);
+        client_system.Add(time - entity->arrive);
+        manager_duration.Add(time - entity->start);
+        entity->end = time;
 
         manager_free = true;
         delete entity;
@@ -227,6 +235,7 @@ void CBank::ArriveCall() // Call arrival handling
         // Calculate next  call arrival
         time1 = sim_time + dist.Exponential(call_arrival);
         entity->arrive = time;
+        entity->start  = time;
 
         // Schedule next call arrival
         executive->AddActivity(time1, ARRIVECALL, call);
@@ -261,7 +270,7 @@ void CBank::StartCall()  // Call start handling
             // Schedule end of conversation time
             executive->AddActivity(time1, ENDCALL, call);
 
-            // manager is free
+            // manager isn't free
             manager_free = false;
         }
     }
@@ -299,10 +308,12 @@ void CBank::StartTeller()
           client = (CEntity *) teller_queue->ObterInfo();
           teller_queue->Remover();
           client->SetActivity(STARTTELLER);
-          client->start=time;
 
           // Collect stats on call waiting
-          client_wait.Add(client->start - client->arrive);
+          client_wait.Add(time - client->start);
+          teller_wait.Add(time - client->start);
+          client->start = time;
+
           if(_DEBUG_) printf("Call Starts %f \n", time);
 
           // Calculate call ending time
@@ -324,11 +335,11 @@ void CBank::EndTeller()
   if(activity == ENDTELLER && time == sim_time){
 
       if(_DEBUG_) printf("Teller Ends %f \n", time);
-      entity->end = time;
 
       // Statistical storage of c
-      teller_system.Add(entity->end - entity->arrive);
+      client_system.Add(entity->end - entity->arrive);
       teller_duration.Add(entity->end - entity->start);
+      entity->end = time;
 
       // manager is free
       teller_free = true;
@@ -340,10 +351,10 @@ void CBank::ExecuteActivity() // Activity execution
 {
     ArriveCall();
     ArriveClient();
-    EndATM();
+    EndTeller();
     EndCall();
     EndManager();
-    StartATM();
+    StartTeller();
     StartCall();
     StartManager();
 }
