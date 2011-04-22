@@ -15,7 +15,65 @@ Os detalhes de cada implementação e os resultados obtidos estão devidamente c
 
 ## Abordagem por Eventos
 
-![DiagramaCliente](DiagramaCliente.png)
+### Descrição Geral
+
+Usando a modelagem por eventos, foram implementadas as classes CClient e CCall.
+
+Cada objeto da classe CClient representa um cliente presencial que entrou no banco. Cada objeto da classe CCall representa uma ligação para o gerente.
+
+### Descrição das rotinas
+
+As classes básicas não foram alteradas a partir do exemplo dado em classe.
+
+Blá!
+
+Classe CCall:
+
+* _ArriveCall_:
+  Trata a chegada de uma ligação; Se o gerente está livre, inicia o serviço e agenda o fim do serviço,
+  caso contrário, coloca a ligação na fila de ligações. Também agente a chegada da próxima ligação.
+
+* _ScheduleEndCall_:
+  Verifica que o tempo que o cliente esperou é maior que o limite. Se for, termina a ligação imediatamente e registra
+  um não atendimento; caso contrário, agenda o final do serviço.
+
+* _EndCallService_:
+  Trata o final do serviço da ligação, coletando estatísticas.
+
+* _EndCall_:
+  Encerra a ligação. Verifica se há outra ligação ou outro cliente na fila para o gerente, se houver, inicia o serviço do mesmo;
+  caso contrário, coloca o gerente em estado livre.
+
+* _ExecuteEvent_:
+  Classe de ajuda para roteamento dos eventos.
+
+Classe CClient:
+
+* _ScheduleEndATMService_:
+
+* _ScheduleEndManagerService_:
+
+* _ScheduleEndTellerService_:
+
+* _ArriveClient_:
+
+* _GoToATM_:
+
+* _GoToManager_:
+
+* _GoToTeller_:
+
+* _GoOut_:
+
+* _EndATMService_:
+
+* _EndManagerService_:
+
+* _EndTellerService_:
+
+* _ExecuteEvent_:
+  Classe de ajuda para roteamento dos eventos.
+
 
 ## Abordagem por Atividades
 
@@ -640,6 +698,10 @@ Porém este tipo de resultado é facilmente entendido ao olharmos os valores má
 Isso significa que apesar da grande maioria dos valores estarem concentrados perto de valores relativamente baixos, existem valores extremos muito grandes, que fazem com que o desvio padrão seja bem elevado.
 
 ## Comparação entre as Abordagens
+
+A dificuldade da abordagem de eventos é a grande quantidade de casos que precisam ser tradados em cada evento.
+Adicionar mais uma condição, por exemplo, mais um tipo de cliente que visita o gerente, requer alterações em 
+diversos pontos do código.
 
 Bla!
 
