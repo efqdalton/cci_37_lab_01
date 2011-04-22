@@ -710,11 +710,14 @@ Isso significa que apesar da grande maioria dos valores estarem concentrados per
 
 ## Comparação entre as Abordagens
 
-A dificuldade da abordagem de eventos é a grande quantidade de casos que precisam ser tradados em cada evento.
+A dificuldade da abordagem de eventos é a grande quantidade de casos que precisam ser tratados em cada evento.
 Adicionar mais uma condição, por exemplo, mais um tipo de cliente que visita o gerente, requer alterações em 
 diversos pontos do código.
 
-Bla!
+Já na abordagem por atividades tem-se grande facilidade em adicionar novas atividades, basta adicionar uma rotina simples a mais para que cada uma seja tratada adequadamente.
+Porém pelo fato de toda complexidade ser tratada numa rotina, é importante ter em mente a existência do acoplamento entre elas, pois por exemplo, ao fazer com que o gerente atenda prioritariamente
+chamadas telefônicas, é preciso que a rotina de atendimento ao cliente esteja programada adequadamente, fazendo com que o atendimento não seja realizado se houver chamada telefônica em espera, este tipo
+de raciocínio é sutil, mas causa grandes problemas e é difícil de ser notado.
 
 ## Conclusão
 
