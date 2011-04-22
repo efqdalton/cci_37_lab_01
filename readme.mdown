@@ -74,6 +74,439 @@ A execução desta modelagem para foi feita para os períodos de 6 meses, 1 ano,
 
 Os resultados resumidos de cada período são dados pelas tabelas a seguir:
 
+*Simulação para 6 Meses*
+<table>
+  <tr>
+    <th>Grandeza</th>
+    <th>Total</th>
+    <th>Média</th>
+    <th>Desvio Padrão</th>
+    <th>Valor Mínimo</th>
+    <th>Valor Máximo</th>
+  </tr>
+  <tr>
+    <td>atm duration</td>
+    <td>8568</td>
+    <td>4.165867</td>
+    <td>1.882081</td>
+    <td>0.202444</td>
+    <td>11.403990</td>
+  </tr>
+  <tr>
+    <td>atm wait</td>
+    <td>8569</td>
+    <td>3.630753</td>
+    <td>5.361806</td>
+    <td>0.000000</td>
+    <td>42.128952</td>
+  </tr>
+  <tr>
+    <td>call duration</td>
+    <td>4683</td>
+    <td>5.509418</td>
+    <td>2.597591</td>
+    <td>1.000407</td>
+    <td>9.995993</td>
+  </tr>
+  <tr>
+    <td>call in system</td>
+    <td>4683</td>
+    <td>9.647131</td>
+    <td>4.116738</td>
+    <td>1.004345</td>
+    <td>19.684191</td>
+  </tr>
+  <tr>
+    <td>call wait</td>
+    <td>5993</td>
+    <td>6.071159</td>
+    <td>4.734937</td>
+    <td>0.000000</td>
+    <td>30.133119</td>
+  </tr>
+  <tr>
+    <td>calls attended</td>
+    <td>5993</td>
+    <td>0.781579</td>
+    <td>0.413209</td>
+    <td>0.000000</td>
+    <td>1.000000</td>
+  </tr>
+  <tr>
+    <td>client in system</td>
+    <td>12207</td>
+    <td>18.914280</td>
+    <td>27.463958</td>
+    <td>0.202444</td>
+    <td>304.283557</td>
+  </tr>
+  <tr>
+    <td>client wait</td>
+    <td>14789</td>
+    <td>9.751271</td>
+    <td>22.949312</td>
+    <td>0.000000</td>
+    <td>270.117981</td>
+  </tr>
+  <tr>
+    <td>manager duration</td>
+    <td>2485</td>
+    <td>9.966270</td>
+    <td>3.869498</td>
+    <td>0.250387</td>
+    <td>25.282985</td>
+  </tr>
+  <tr>
+    <td>manager wait</td>
+    <td>2485</td>
+    <td>40.866090</td>
+    <td>42.751382</td>
+    <td>0.000000</td>
+    <td>270.117981</td>
+  </tr>
+  <tr>
+    <td>teller duration</td>
+    <td>3735</td>
+    <td>7.020002</td>
+    <td>2.941426</td>
+    <td>0.209480</td>
+    <td>18.358931</td>
+  </tr>
+  <tr>
+    <td>teller wait</td>
+    <td>3735</td>
+    <td>3.091672</td>
+    <td>5.419531</td>
+    <td>0.000000</td>
+    <td>44.117299</td>
+  </tr>
+</table>
+
+*Simulação para 1 Ano*
+<table>
+  <tr>
+    <th>Grandeza</th>
+    <th>Total</th>
+    <th>Média</th>
+    <th>Desvio Padrão</th>
+    <th>Valor Mínimo</th>
+    <th>Valor Máximo</th>
+  </tr>
+  <tr>
+    <td>atm duration</td>
+    <td>16972</td>
+    <td>4.139690</td>
+    <td>1.868442</td>
+    <td>0.201759</td>
+    <td>11.420893</td>
+  </tr>
+  <tr>
+    <td>atm wait</td>
+    <td>16973</td>
+    <td>3.575153</td>
+    <td>5.288062</td>
+    <td>0.000000</td>
+    <td>42.662593</td>
+  </tr>
+  <tr>
+    <td>call duration</td>
+    <td>9442</td>
+    <td>5.481248</td>
+    <td>2.582245</td>
+    <td>1.000407</td>
+    <td>9.998804</td>
+  </tr>
+  <tr>
+    <td>call in system</td>
+    <td>9442</td>
+    <td>9.752509</td>
+    <td>4.087556</td>
+    <td>1.004345</td>
+    <td>19.684191</td>
+  </tr>
+  <tr>
+    <td>call wait</td>
+    <td>12261</td>
+    <td>6.281415</td>
+    <td>4.776826</td>
+    <td>0.000000</td>
+    <td>31.315765</td>
+  </tr>
+  <tr>
+    <td>calls attended</td>
+    <td>12261</td>
+    <td>0.770084</td>
+    <td>0.420796</td>
+    <td>0.000000</td>
+    <td>1.000000</td>
+  </tr>
+  <tr>
+    <td>client in system</td>
+    <td>24342</td>
+    <td>19.636214</td>
+    <td>30.489836</td>
+    <td>0.202444</td>
+    <td>331.357688</td>
+  </tr>
+  <tr>
+    <td>client wait</td>
+    <td>29422</td>
+    <td>10.358609</td>
+    <td>25.812424</td>
+    <td>0.000000</td>
+    <td>310.274037</td>
+  </tr>
+  <tr>
+    <td>manager duration</td>
+    <td>4938</td>
+    <td>10.127063</td>
+    <td>3.809828</td>
+    <td>0.215727</td>
+    <td>26.741799</td>
+  </tr>
+  <tr>
+    <td>manager wait</td>
+    <td>4939</td>
+    <td>44.560014</td>
+    <td>49.211696</td>
+    <td>0.000000</td>
+    <td>310.274037</td>
+  </tr>
+  <tr>
+    <td>teller duration</td>
+    <td>7509</td>
+    <td>7.052402</td>
+    <td>2.916333</td>
+    <td>0.209480</td>
+    <td>18.358931</td>
+  </tr>
+  <tr>
+    <td>teller wait</td>
+    <td>7510</td>
+    <td>3.196804</td>
+    <td>5.482631</td>
+    <td>0.000000</td>
+    <td>44.117299</td>
+  </tr>
+</table>
+
+*Simulação para 2 Anos*
+<table>
+  <tr>
+    <th>Grandeza</th>
+    <th>Total</th>
+    <th>Média</th>
+    <th>Desvio Padrão</th>
+    <th>Valor Mínimo</th>
+    <th>Valor Máximo</th>
+  </tr>
+  <tr>
+    <td>call wait</td>
+    <td>24255</td>
+    <td>6.208387</td>
+    <td>4.777759</td>
+    <td>0.000000</td>
+    <td>34.377662</td>
+  </tr>
+  <tr>
+    <td>call in system</td>
+    <td>18740</td>
+    <td>9.696642</td>
+    <td>4.124551</td>
+    <td>1.003388</td>
+    <td>19.755275</td>
+  </tr>
+  <tr>
+    <td>call duration</td>
+    <td>18740</td>
+    <td>5.483480</td>
+    <td>2.590704</td>
+    <td>1.000407</td>
+    <td>9.998804</td>
+  </tr>
+  <tr>
+    <td>calls attended</td>
+    <td>24255</td>
+    <td>0.772665</td>
+    <td>0.419119</td>
+    <td>0.000000</td>
+    <td>1.000000</td>
+  </tr>
+  <tr>
+    <td>client wait</td>
+    <td>58698</td>
+    <td>9.529119</td>
+    <td>23.746118</td>
+    <td>0.000000</td>
+    <td>310.274037</td>
+  </tr>
+  <tr>
+    <td>client in system</td>
+    <td>48581</td>
+    <td>18.613225</td>
+    <td>28.206896</td>
+    <td>0.202444</td>
+    <td>331.357688</td>
+  </tr>
+  <tr>
+    <td>manager wait</td>
+    <td>9808</td>
+    <td>40.306494</td>
+    <td>45.905201</td>
+    <td>0.000000</td>
+    <td>310.274037</td>
+  </tr>
+  <tr>
+    <td>manager duration</td>
+    <td>9808</td>
+    <td>10.100937</td>
+    <td>3.877793</td>
+    <td>0.203189</td>
+    <td>26.832446</td>
+  </tr>
+  <tr>
+    <td>teller wait</td>
+    <td>14967</td>
+    <td>3.103734</td>
+    <td>5.290912</td>
+    <td>0.000000</td>
+    <td>44.117299</td>
+  </tr>
+  <tr>
+    <td>teller duration</td>
+    <td>14966</td>
+    <td>7.049603</td>
+    <td>2.899892</td>
+    <td>0.209480</td>
+    <td>19.112613</td>
+  </tr>
+  <tr>
+    <td>atm wait</td>
+    <td>33923</td>
+    <td>3.465512</td>
+    <td>5.026479</td>
+    <td>0.000000</td>
+    <td>42.662593</td>
+  </tr>
+  <tr>
+    <td>atm duration</td>
+    <td>33922</td>
+    <td>4.137965</td>
+    <td>1.864010</td>
+    <td>0.201759</td>
+    <td>12.181896</td>
+  </tr>
+</table>
+
+*Simulação para 5 Anos*
+<table>
+  <tr>
+    <th>Grandeza</th>
+    <th>Total</th>
+    <th>Média</th>
+    <th>Desvio Padrão</th>
+    <th>Valor Mínimo</th>
+    <th>Valor Máximo</th>
+  </tr>
+  <tr>
+    <td>atm duration</td>
+    <td>84436</td>
+    <td>4.140969</td>
+    <td>1.862674</td>
+    <td>0.200681</td>
+    <td>12.181896</td>
+  </tr>
+  <tr>
+    <td>atm wait</td>
+    <td>84436</td>
+    <td>3.464934</td>
+    <td>5.021251</td>
+    <td>0.000000</td>
+    <td>50.108404</td>
+  </tr>
+  <tr>
+    <td>call duration</td>
+    <td>46633</td>
+    <td>5.499744</td>
+    <td>2.585519</td>
+    <td>1.000033</td>
+    <td>9.999463</td>
+  </tr>
+  <tr>
+    <td>call in system</td>
+    <td>46633</td>
+    <td>9.738059</td>
+    <td>4.099945</td>
+    <td>1.000368</td>
+    <td>19.975167</td>
+  </tr>
+  <tr>
+    <td>call wait</td>
+    <td>60367</td>
+    <td>6.236943</td>
+    <td>4.785335</td>
+    <td>0.000000</td>
+    <td>48.987263</td>
+  </tr>
+  <tr>
+    <td>calls attended</td>
+    <td>60367</td>
+    <td>0.772492</td>
+    <td>0.419227</td>
+    <td>0.000000</td>
+    <td>1.000000</td>
+  </tr>
+  <tr>
+    <td>client in system</td>
+    <td>121104</td>
+    <td>18.726493</td>
+    <td>28.595492</td>
+    <td>0.200681</td>
+    <td>346.831674</td>
+  </tr>
+  <tr>
+    <td>client wait</td>
+    <td>146340</td>
+    <td>9.609135</td>
+    <td>24.112179</td>
+    <td>0.000000</td>
+    <td>342.918013</td>
+  </tr>
+  <tr>
+    <td>manager duration</td>
+    <td>24622</td>
+    <td>10.103307</td>
+    <td>3.863379</td>
+    <td>0.203189</td>
+    <td>26.832446</td>
+  </tr>
+  <tr>
+    <td>manager wait</td>
+    <td>24623</td>
+    <td>40.511503</td>
+    <td>46.656190</td>
+    <td>0.000000</td>
+    <td>342.918013</td>
+  </tr>
+  <tr>
+    <td>teller duration</td>
+    <td>37281</td>
+    <td>7.061668</td>
+    <td>2.895419</td>
+    <td>0.209480</td>
+    <td>21.990956</td>
+  </tr>
+  <tr>
+    <td>teller wait</td>
+    <td>37281</td>
+    <td>3.114749</td>
+    <td>5.385363</td>
+    <td>0.000000</td>
+    <td>53.848460</td>
+  </tr>
+</table>
+
+
 *Simulação para 10 Anos*
 <table>
   <tr>
