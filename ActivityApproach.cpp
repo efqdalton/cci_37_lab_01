@@ -38,7 +38,6 @@ bool manager_free = true;
 bool teller_free  = true;
 bool atm_free     = true;
 
-
 class CBank:public CActivity // Call class as a sub class of CActivity
 {
 public:
@@ -207,7 +206,6 @@ void CBank::StartManager()  // service Start handling
 void CBank::EndManager()  // service End handling
 {
     double sim_time = executive->SimulationTime();
-
     if (activity == ENDMANAGER && time == sim_time) {
         if(_DEBUG_) printf("Service Ends %f \n", time);
 
@@ -288,7 +286,6 @@ void CBank::EndCall()  // Call ending handling
     double sim_time = executive->SimulationTime();
 
     if(activity == ENDCALL && time == sim_time){
-
         if(_DEBUG_) printf("Call Ends %f \n", time);
         entity->end = time;
 
@@ -520,7 +517,7 @@ int main(int argc, _TCHAR* argv[])
 
     // Simulation Paramters
     // um ano = 60min * 8h * 21d * 12m
-    double total_time = 60*8*21*12;
+    double total_time = 10*60*8*21*12;
     executive->SetSimulationEnd(total_time);
     // call_arrival=5.0; // call arrival mean - Negative exponential distribution
     // arrival_mean=3.0; // client arrival mean - Negative exponential distribution

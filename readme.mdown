@@ -1,0 +1,14 @@
+# Laboratório de CCI-36/37
+
+### Alunos:
+
+Alexandre Hideki Deguchi Martani
+
+Dalton Vinicius Teixiera Pinto
+
+## Objetivo
+
+Este laboratório tem como objetivo o estudo e compreensão de modelos de simulação.
+Foram escolhidos os modelos de abordagem por eventos e por atividades.
+
+Os detalhes de cada implementação e os resultados obtidos estão devidamente comentados nos itens a seguir.
