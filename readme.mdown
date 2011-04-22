@@ -31,7 +31,7 @@ Classe CCall:
 
 * _ArriveCall_:
   Trata a chegada de uma ligação; Se o gerente está livre, inicia o serviço e agenda o fim do serviço,
-  caso contrário, coloca a ligação na fila de ligações. Também agente a chegada da próxima ligação.
+  caso contrário, coloca a ligação na fila de ligações. Também agenda a chegada da próxima ligação.
 
 * _ScheduleEndCall_:
   Verifica que o tempo que o cliente esperou é maior que o limite. Se for, termina a ligação imediatamente e registra
@@ -50,26 +50,41 @@ Classe CCall:
 Classe CClient:
 
 * _ScheduleEndATMService_:
+  Agenda o final do serviço no ATM.
 
 * _ScheduleEndManagerService_:
+  Agenda o final do serviço no gerente.
 
 * _ScheduleEndTellerService_:
+  Agenda o final do serviço no caixa.
 
 * _ArriveClient_:
+  Trata a chegada de um cliente. Basicamente, decide para onde o cliente deseja ir e chama uma das funções GoTo*. Também
+  agenda a chegada do próximo cliente.
 
 * _GoToATM_:
+  Trata a ida do cliente ao ATM. Se o ATM estiver livre e sem fila, ele vai no ATM, caso contrário, ele entra no fim da fila.
 
 * _GoToManager_:
+  Trata a ida do cliente ao gerente. Se o gerente estiver livre e sem fila e não tiver nenhuma ligação na fila, ele vai no gerente, caso contrário, ele entra no fim da fila.
 
 * _GoToTeller_:
+  Trata a ida do cliente ao caixa. Se o caixa estiver livre e sem fila, ele vai no caixa, caso contrário, ele entra no fim da fila.
 
 * _GoOut_:
+  Trata a saída do cliente, gerando estatística de tempo de permanência do cliente no sistema.
 
 * _EndATMService_:
+  Trata o fim do serviço de ATM, onde o cliente pode decidir sair ou ir para o caixa ou ir para o gerente.
+  Verifica a fila do ATM para a presença de outros clientes e processa o próximo, ou marca o ATM como livre.
 
 * _EndManagerService_:
+  Trata o fim do serviço de gerente, depois do qual o cliente sai da agência.
+  Verifica a fila de ligações e a de clientes no gerente e processa o próximo, ou marca o gerente como livre.
 
 * _EndTellerService_:
+  Trata o fim do serviço de caixa, depois do qual o cliente sai da agência.
+  Verifica a fila do caixa para a presença de outros clientes e processa o próximo, ou marca o caixa como livre.
 
 * _ExecuteEvent_:
   Classe de ajuda para roteamento dos eventos.
