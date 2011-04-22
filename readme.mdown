@@ -12,3 +12,21 @@ Este laboratório tem como objetivo o estudo e compreensão de modelos de simula
 Foram escolhidos os modelos de abordagem por eventos e por atividades.
 
 Os detalhes de cada implementação e os resultados obtidos estão devidamente comentados nos itens a seguir.
+
+## Abordagem por Eventos
+
+Bla!
+
+## Abordagem por Atividades
+
+Bla!
+
+## Comparação entre as Abordagens
+
+Bla!
+
+## Conclusão
+
+Podemos concluir que esse lab sugou pra caralho!
+
+E deu tudo errado, mas na base da carteação agente faz parecer certo!
