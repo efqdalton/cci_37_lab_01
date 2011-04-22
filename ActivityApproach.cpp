@@ -381,6 +381,7 @@ void CBank::StartATM()
 void CBank::EndATM()
 {
   double sim_time = executive->SimulationTime();
+  CDistribution dist;
 
   if(activity == ENDATM && time == sim_time){
 
@@ -396,9 +397,9 @@ void CBank::EndATM()
 
       double r = dist.Random();
       if(r < atm_to_teller_prob){
-          teller_queue->InserirFim(client);
+          teller_queue->InserirFim(entity);
       }else if(r < atm_to_teller_prob + atm_to_manager_prob){
-          manager_queue->InserirFim(client);
+          manager_queue->InserirFim(entity);
       }else{
           client_system.Add(entity->end - entity->arrive);
           delete entity;
