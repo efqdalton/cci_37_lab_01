@@ -15,7 +15,7 @@ Os detalhes de cada implementação e os resultados obtidos estão devidamente c
 
 ## Abordagem por Eventos
 
-Bla!
+![DiagramaCliente](DiagramaCliente.png)
 
 ## Abordagem por Atividades
 
