@@ -45,21 +45,22 @@ public:
     // attributes for storing arrival time, and start and end conversation time
     CBank():CActivity() // Constructor
     {}
-    // Client arrival activity
+
     void ArriveClient();
-    // Client arrival activity
+    void ArriveCall();
+
     void StartManager();
-    // Client service end activity
     void EndManager();
 
-
-    // Call Arrive method
-    void ArriveCall();
-    // Call Arrive method
     void StartCall();
-    // Call End  method
     void EndCall();
-    // Execute Activity method acording to Activity
+
+    void StartTeller();
+    void EndTeller();
+
+    // void StartATM();
+    // void EndATM();
+
     void ExecuteActivity();
 };
 
@@ -126,9 +127,12 @@ double call_arrival, arrival_mean, arrival_manager_prob, arrival_teller_prob, at
 CStatistics client_wait(     "output/ClientWait.txt",      ADD_FILE),
             call_wait(       "output/CallWait.txt",        ADD_FILE),
             call_system(     "output/CallSystem.txt",      ADD_FILE),
-            client_system(   "output/ClientSystem.txt",    ADD_FILE),
             call_duration(   "output/CallDuration.txt",    ADD_FILE),
-            service_duration("output/ServiceDuration.txt", ADD_FILE);
+            client_system(   "output/ClientSystem.txt",    ADD_FILE),
+            manager_duration("output/ManagerDuration.txt", ADD_FILE),
+            teller_system(   "output/TellerSystem.txt",    ADD_FILE),
+            teller_duration( "output/TellerDuration.txt",  ADD_FILE);
+
 
 void CBank::ArriveClient()  // Arrival activity handling
 {
@@ -203,7 +207,7 @@ void CBank::EndManager()  // service End handling
 
         // Statistical storage of client time in system ans service duration
         client_system.Add(entity->end - entity->arrive);
-        service_duration.Add(entity->end - entity->start);
+        manager_duration.Add(entity->end - entity->start);
 
         manager_free = true;
         delete entity;
@@ -282,13 +286,64 @@ void CBank::EndCall()  // Call ending handling
     }
 }
 
+void CBank::StartTeller()
+{
+  double time1, sim_time = executive->SimulationTime();
+  CDistribution dist;
+  CEntity * client;
+
+  if(teller_free){
+      if(!teller_queue->EhVazia()){
+
+          // Get call from queue
+          client = (CEntity *) teller_queue->ObterInfo();
+          teller_queue->Remover();
+          client->SetActivity(STARTTELLER);
+          client->start=time;
+
+          // Collect stats on call waiting
+          client_wait.Add(client->start - client->arrive);
+          if(_DEBUG_) printf("Call Starts %f \n", time);
+
+          // Calculate call ending time
+          time1 = sim_time + dist.NormalLimited(teller_service_mean, teller_service_stddev, min_service, max_service);
+
+          // Schedule end of conversation time
+          executive->AddActivity(time1, ENDTELLER, client);
+
+          // teller isn't free
+          teller_free = false;
+      }
+  }
+}
+
+void CBank::EndTeller()
+{
+  double sim_time = executive->SimulationTime();
+
+  if(activity == ENDTELLER && time == sim_time){
+
+      if(_DEBUG_) printf("Teller Ends %f \n", time);
+      entity->end = time;
+
+      // Statistical storage of c
+      teller_system.Add(entity->end - entity->arrive);
+      teller_duration.Add(entity->end - entity->start);
+
+      // manager is free
+      teller_free = true;
+      delete entity;
+  }
+}
 
 void CBank::ExecuteActivity() // Activity execution
 {
     ArriveCall();
     ArriveClient();
+    EndATM();
     EndCall();
     EndManager();
+    StartATM();
     StartCall();
     StartManager();
 }
@@ -309,9 +364,9 @@ void StatisticsReport() // Statistical display of mean, standard deviation, mini
     printf("Client waiting \n Mean  = %f  ",client_wait.Mean());
     printf(" Std Dev  = %f \n",client_wait.StandardDeviation());
     printf(" Min  = %f  Max = %f \n",client_wait.min,client_wait.max);
-    printf("Service duration \n Mean  = %f  ",service_duration.Mean());
-    printf(" Std Dev  = %f \n",service_duration.StandardDeviation());
-    printf(" Min  = %f  Max = %f \n",service_duration.min,service_duration.max);
+    printf("Manager duration \n Mean  = %f  ",manager_duration.Mean());
+    printf(" Std Dev  = %f \n",manager_duration.StandardDeviation());
+    printf(" Min  = %f  Max = %f \n",manager_duration.min,manager_duration.max);
     printf("Client in the System \n Mean = %f  ",client_system.Mean());
     printf(" Std Dev  = %f \n",client_system.StandardDeviation());
     printf(" Min  = %f  Max = %f \n",client_system.min,client_system.max);
