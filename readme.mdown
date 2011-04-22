@@ -68,6 +68,119 @@ Estas atividades são: _ArriveClient_, _ArriveCall_, _StartManager_, _EndManager
   Trata de terminar execução do atendimento de cliente pelo Caixa Eletrônico, deixando-o livre para atender um novo cliente.
   Tal atividade também reencaminha o cliente para próximo atendimento, se necessário (Gerente ou Operador d Caixa).
 
+### Resultados
+
+A execução desta modelagem para foi feita para os períodos de 6 meses, 1 ano, 2 anos, 5 anos e 10 anos.
+
+Os resultados resumidos de cada período são dados pelas tabelas a seguir:
+
+<table>
+  <tr>
+    <th>Grandeza</th>
+    <th>Total</th>
+    <th>Média</th>
+    <th>Desvio Padrão</th>
+    <th>Valor Mínimo</th>
+    <th>Valor Máximo</th>
+  </tr>
+  <tr>
+    <td>atm duration</td>
+    <td>169735</td>
+    <td>4.140539</td>
+    <td>1.865045</td>
+    <td>0.200062</td>
+    <td>13.267173</td>
+  </tr>
+  <tr>
+    <td>atm wait</td>
+    <td>169736</td>
+    <td>3.494541</td>
+    <td>5.040700</td>
+    <td>0.000000</td>
+    <td>53.240260</td>
+  </tr>
+  <tr>
+    <td>call duration</td>
+    <td>93191</td>
+    <td>5.493792</td>
+    <td>2.592358</td>
+    <td>1.000033</td>
+    <td>9.999874</td>
+  </tr>
+  <tr>
+    <td>call in system</td>
+    <td>93191</td>
+    <td>9.732696</td>
+    <td>4.105017</td>
+    <td>1.000119</td>
+    <td>19.975167</td>
+  </tr>
+  <tr>
+    <td>call wait</td>
+    <td>120471</td>
+    <td>6.232930</td>
+    <td>4.790617</td>
+    <td>0.000000</td>
+    <td>48.987263</td>
+  </tr>
+  <tr>
+    <td>calls attended</td>
+    <td>120471</td>
+    <td>0.773564</td>
+    <td>0.418526</td>
+    <td>0.000000</td>
+    <td>1.000000</td>
+  </tr>
+  <tr>
+    <td>client in system</td>
+    <td>242512</td>
+    <td>18.733024</td>
+    <td>28.397076</td>
+    <td>0.200681</td>
+    <td>434.647716</td>
+  </tr>
+  <tr>
+    <td>client wait</td>
+    <td>293238</td>
+    <td>9.608537</td>
+    <td>23.912859</td>
+    <td>0.000000</td>
+    <td>406.266082</td>
+  </tr>
+  <tr>
+    <td>manager duration</td>
+    <td>49413</td>
+    <td>10.099489</td>
+    <td>3.879874</td>
+    <td>0.203189</td>
+    <td>26.832446</td>
+  </tr>
+  <tr>
+    <td>manager wait</td>
+    <td>49413</td>
+    <td>40.455321</td>
+    <td>46.037706</td>
+    <td>0.000000</td>
+    <td>406.266082</td>
+  </tr>
+  <tr>
+    <td>teller duration</td>
+    <td>74089</td>
+    <td>7.066864</td>
+    <td>2.895610</td>
+    <td>0.200799</td>
+    <td>21.990956</td>
+  </tr>
+  <tr>
+    <td>teller wait</td>
+    <td>74089</td>
+    <td>3.042558</td>
+    <td>5.303020</td>
+    <td>0.000000</td>
+    <td>53.848460</td>
+  </tr>
+</table>
+
 ## Comparação entre as Abordagens
 
 Bla!
