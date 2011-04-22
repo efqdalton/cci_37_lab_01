@@ -615,6 +615,30 @@ Os resultados resumidos de cada período são dados pelas tabelas a seguir:
   </tr>
 </table>
 
+*Descrição dos Campos*:
+
+* _call wait_: Tempo de espera de chamadas
+* _call in system_: Tempo que as chamadas ficam no sistema
+* _call duration_: Duração do atendimento de cada chamada
+* _call attended_: Atendimentos de chamada (valor 1 para chamada atendida, valor 0 para chamada não atendida, sendo que o total é o numero de chamadas)
+* _client wait_: Tempo de espera do cliente, para cada atendimento, independente de qual
+* _client in system_: Tempo que cada cliente fica no sistema
+* _manager wait_: Tempo de espera do cliente aguardando o gerente
+* _manager duration_: Duração do atendimento do cliente pelo gerente
+* _teller wait_: Tempo de espera do cliente aguardando o operador de caixa
+* _teller duration_: Duração do atendimento do cliente pelo operador de caixa
+* _atm wait_: Tempo de espera do cliente aguardando o caixa eletrônico
+* _atm duration_: Duração do atendimento do cliente pelo caixa eletrônico
+
+### Análise dos Resultados
+
+Pode-se perceber que em todos os dados, tem-se uma convergência rápida, sendo que eles diferem pouco.
+Isso pode denotar que, a aproximação obtida é boa.
+
+Ainda assim, alguns dos dados apresentam comportamento estranho, como os valores de manager wait (Espera do cliente para atendimento com gerente).
+Porém este tipo de resultado é facilmente entendido ao olharmos os valores máximos, que são extremamente altos.
+Isso significa que apesar da grande maioria dos valores estarem concentrados perto de valores relativamente baixos, existem valores extremos muito grandes, que fazem com que o desvio padrão seja bem elevado.
+
 ## Comparação entre as Abordagens
 
 Bla!
