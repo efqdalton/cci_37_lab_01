@@ -435,55 +435,74 @@ void CBank::ExecuteActivity() // Activity execution
 
 void StatisticsReport() // Statistical display of mean, standard deviation, minimum and maximum
 {
+    FILE * stats_file;
+    stats_file = fopen("output/statistics.csv", "w");
+    fprintf(stats_file, "Stat,Total,Mean,Dev,Min,Max\n");
+
     printf(" \nStatistical Report \n");
 
     printf("Call waiting \n Mean  = %f  ",call_wait.Mean());
     printf(" Std Dev  = %f \n",call_wait.StandardDeviation());
     printf(" Min  = %f  Max = %f \n",call_wait.min,call_wait.max);
+    fprintf(stats_file, "Call Wait,%d,%f,%f,%f,%f\n", call_wait.N(), call_wait.Mean(), call_wait.StandardDeviation(), call_wait.min, call_wait.max);
 
     printf("Call in the System \n Mean = %f  ",call_system.Mean());
     printf(" Std Dev  = %f \n",call_system.StandardDeviation());
     printf(" Min  = %f  Max = %f \n",call_system.min,call_system.max);
+    fprintf(stats_file, "Call in System,%d,%f,%f,%f,%f\n", call_system.N(), call_system.Mean(), call_system.StandardDeviation(), call_system.min, call_system.max);
 
     printf("Call duration \n Mean = %f  ",call_duration.Mean());
     printf(" Std Dev  = %f \n",call_duration.StandardDeviation());
     printf(" Min  = %f  Max = %f \n",call_duration.min,call_duration.max);
+    fprintf(stats_file, "Call Duration,%d,%f,%f,%f,%f\n", call_duration.N(), call_duration.Mean(), call_duration.StandardDeviation(), call_duration.min, call_duration.max);
 
     printf("Call Attended \n Mean = %f  ",call_attended.Mean());
     printf(" Std Dev  = %f \n",call_attended.StandardDeviation());
     printf(" Min  = %f  Max = %f \n",call_attended.min,call_attended.max);
+    fprintf(stats_file, "Calls Attended,%d,%f,%f,%f,%f\n", call_attended.N(), call_attended.Mean(), call_attended.StandardDeviation(), call_attended.min, call_attended.max);
 
     printf("Client waiting \n Mean  = %f  ",client_wait.Mean());
     printf(" Std Dev  = %f \n",client_wait.StandardDeviation());
     printf(" Min  = %f  Max = %f \n",client_wait.min,client_wait.max);
+    fprintf(stats_file, "Client Wait,%d,%f,%f,%f,%f\n", client_wait.N(), client_wait.Mean(), client_wait.StandardDeviation(), client_wait.min, client_wait.max);
 
     printf("Client in the System \n Mean = %f  ",client_system.Mean());
     printf(" Std Dev  = %f \n",client_system.StandardDeviation());
     printf(" Min  = %f  Max = %f \n",client_system.min,client_system.max);
+    fprintf(stats_file, "Client in System,%d,%f,%f,%f,%f\n", client_system.N(), client_system.Mean(), client_system.StandardDeviation(), client_system.min, client_system.max);
 
     printf("Client waiting for Manager \n Mean  = %f  ",manager_wait.Mean());
     printf(" Std Dev  = %f \n",manager_wait.StandardDeviation());
     printf(" Min  = %f  Max = %f \n",manager_wait.min,manager_wait.max);
+    fprintf(stats_file, "Manager Wait,%d,%f,%f,%f,%f\n", manager_wait.N(), manager_wait.Mean(), manager_wait.StandardDeviation(), manager_wait.min, manager_wait.max);
 
     printf("Manager duration \n Mean  = %f  ",manager_duration.Mean());
     printf(" Std Dev  = %f \n",manager_duration.StandardDeviation());
     printf(" Min  = %f  Max = %f \n",manager_duration.min,manager_duration.max);
+    fprintf(stats_file, "manager Duration,%d,%f,%f,%f,%f\n", manager_duration.N(), manager_duration.Mean(), manager_duration.StandardDeviation(), manager_duration.min, manager_duration.max);
 
     printf("Client waiting for Teller \n Mean  = %f  ",teller_wait.Mean());
     printf(" Std Dev  = %f \n",teller_wait.StandardDeviation());
     printf(" Min  = %f  Max = %f \n",teller_wait.min,teller_wait.max);
+    fprintf(stats_file, "Teller Wait,%d,%f,%f,%f,%f\n", teller_wait.N(), teller_wait.Mean(), teller_wait.StandardDeviation(), teller_wait.min, teller_wait.max);
 
     printf("Teller duration \n Mean  = %f  ",teller_duration.Mean());
     printf(" Std Dev  = %f \n",teller_duration.StandardDeviation());
     printf(" Min  = %f  Max = %f \n",teller_duration.min,teller_duration.max);
+    fprintf(stats_file, "Teller Duration,%d,%f,%f,%f,%f\n", teller_duration.N(), teller_duration.Mean(), teller_duration.StandardDeviation(), teller_duration.min, teller_duration.max);
 
     printf("Client waiting for ATM \n Mean  = %f  ",atm_wait.Mean());
     printf(" Std Dev  = %f \n",atm_wait.StandardDeviation());
     printf(" Min  = %f  Max = %f \n",atm_wait.min,atm_wait.max);
+    fprintf(stats_file, "ATM Wait,%d,%f,%f,%f,%f\n", atm_wait.N(), atm_wait.Mean(), atm_wait.StandardDeviation(), atm_wait.min, atm_wait.max);
 
     printf("ATM duration \n Mean  = %f  ",atm_duration.Mean());
     printf(" Std Dev  = %f \n",atm_duration.StandardDeviation());
     printf(" Min  = %f  Max = %f \n",atm_duration.min,atm_duration.max);
+    fprintf(stats_file, "ATM Duration,%d,%f,%f,%f,%f\n", atm_duration.N(), atm_duration.Mean(), atm_duration.StandardDeviation(), atm_duration.min, atm_duration.max);
+
+    fflush(stats_file);
+    fclose(stats_file);
 }
 
 int main(int argc, _TCHAR* argv[])
