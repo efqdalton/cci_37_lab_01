@@ -182,7 +182,7 @@ void CBank::StartManager()  // service Start handling
     CEntity       *client;
 
     if(manager_free) { // Manager is free
-        if (!manager_queue->EhVazia()) { // There is client in the queue
+        if (call_queue->EhVazia() && !manager_queue->EhVazia()) { // There is client in the queue
             // Get client from client queue
             client = (CEntity*) manager_queue->ObterInfo();
             manager_queue->Remover();
