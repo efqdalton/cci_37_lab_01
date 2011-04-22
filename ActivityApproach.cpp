@@ -127,6 +127,7 @@ double call_arrival, arrival_mean, arrival_manager_prob, arrival_teller_prob, at
 CStatistics call_wait(        "output/CallWait.txt",        ADD_FILE ),
             call_system(      "output/CallSystem.txt",      ADD_FILE ),
             call_duration(    "output/CallDuration.txt",    ADD_FILE ),
+            call_attended(    "output/CallAttended.txt",    ADD_FILE ),
 
             client_wait(      "output/ClientWait.txt",      ADD_FILE ),
             client_system(    "output/ClientSystem.txt",    ADD_FILE ),
@@ -245,7 +246,7 @@ void CBank::ArriveCall() // Call arrival handling
 
 void CBank::StartCall()  // Call start handling
 {
-    double time1, sim_time = executive->SimulationTime();
+    double time1, wait_time, sim_time = executive->SimulationTime();
     CDistribution dist;
     CEntity * call;
 
@@ -258,8 +259,16 @@ void CBank::StartCall()  // Call start handling
             call->SetActivity(STARTCALL);
             call->start=time;
 
-            // Collect stats on call waiting
-            call_wait.Add(call->start - call->arrive);
+            // Collect stats on call waiting if doesnt waiting for a long time
+            wait_time = call->start - call->arrive;
+            if(wait_time < call_max_wait){
+              call_wait.Add(wait_time);
+              call_attended.Add(1.0);
+            }else{
+              call_attended.Add(0.0);
+              return ;
+            }
+
             if(_DEBUG_) printf("Call Starts %f \n", time);
 
             // Calculate call ending time
@@ -440,6 +449,10 @@ void StatisticsReport() // Statistical display of mean, standard deviation, mini
     printf(" Std Dev  = %f \n",call_duration.StandardDeviation());
     printf(" Min  = %f  Max = %f \n",call_duration.min,call_duration.max);
 
+    printf("Call Attended \n Mean = %f  ",call_attended.Mean());
+    printf(" Std Dev  = %f \n",call_attended.StandardDeviation());
+    printf(" Min  = %f  Max = %f \n",call_attended.min,call_attended.max);
+
     printf("Client waiting \n Mean  = %f  ",client_wait.Mean());
     printf(" Std Dev  = %f \n",client_wait.StandardDeviation());
     printf(" Min  = %f  Max = %f \n",client_wait.min,client_wait.max);
@@ -488,7 +501,7 @@ int main(int argc, _TCHAR* argv[])
 
     // Simulation Paramters
     // um ano = 60min * 8h * 21d * 12m
-    double total_time = 60*8*21*3; // Trimestre
+    double total_time = 60*8*21*12;
     executive->SetSimulationEnd(total_time);
     // call_arrival=5.0; // call arrival mean - Negative exponential distribution
     // arrival_mean=3.0; // client arrival mean - Negative exponential distribution
