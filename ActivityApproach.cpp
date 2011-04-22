@@ -335,8 +335,8 @@ void CBank::EndTeller()
       if(_DEBUG_) printf("Teller Ends %f \n", time);
 
       // Statistical storage of c
-      client_system.Add(entity->end - entity->arrive);
-      teller_duration.Add(entity->end - entity->start);
+      client_system.Add(time - entity->arrive);
+      teller_duration.Add(time - entity->start);
       entity->end = time;
 
       // teller is free
@@ -387,13 +387,22 @@ void CBank::EndATM()
       if(_DEBUG_) printf("Teller Ends %f \n", time);
 
       // Statistical storage of c
-      client_system.Add(entity->end - entity->arrive);
-      atm_duration.Add(entity->end - entity->start);
+      atm_duration.Add(time - entity->start);
       entity->end = time;
+      entity->start = time;
 
       // atm is free
       atm_free = true;
-      delete entity;
+
+      double r = dist.Random();
+      if(r < atm_to_teller_prob){
+          teller_queue->InserirFim(client);
+      }else if(r < atm_to_teller_prob + atm_to_manager_prob){
+          manager_queue->InserirFim(client);
+      }else{
+          client_system.Add(entity->end - entity->arrive);
+          delete entity;
+      }
   }
 }
 
