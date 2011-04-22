@@ -479,7 +479,7 @@ void StatisticsReport() // Statistical display of mean, standard deviation, mini
     printf("Manager duration \n Mean  = %f  ",manager_duration.Mean());
     printf(" Std Dev  = %f \n",manager_duration.StandardDeviation());
     printf(" Min  = %f  Max = %f \n",manager_duration.min,manager_duration.max);
-    fprintf(stats_file, "manager Duration,%d,%f,%f,%f,%f\n", manager_duration.N(), manager_duration.Mean(), manager_duration.StandardDeviation(), manager_duration.min, manager_duration.max);
+    fprintf(stats_file, "Manager Duration,%d,%f,%f,%f,%f\n", manager_duration.N(), manager_duration.Mean(), manager_duration.StandardDeviation(), manager_duration.min, manager_duration.max);
 
     printf("Client waiting for Teller \n Mean  = %f  ",teller_wait.Mean());
     printf(" Std Dev  = %f \n",teller_wait.StandardDeviation());
