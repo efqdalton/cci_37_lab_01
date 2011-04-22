@@ -718,6 +718,8 @@ Bla!
 
 ## Conclusão
 
-Podemos concluir que esse lab sugou pra caralho!
+Com a realização deste laboratório, pode-se compreender melhor o funcionamento de modelagem de simulações.
 
-E deu tudo errado, mas na base da carteação agente faz parecer certo!
+Os resultados obtidos foram coerentes com o esperado, uma vez que, para abordagens diferentes, foi possível obter valores bem próximos para cada grandeza estudada.
+Em algumas grandezas, o valores não foram tão próximos quanto o esperado, porém tal resultado é facilmente compreendido quando se observa que estes estão dentro da faixa determinada pelo desvio padrão, que nestes casos é bem grande
+devido à existência de alguns poucos valores extremamente altos que fazem com que haja flutuação entre os valores, chegando-se a obtenção de desvios padrões maiores que a média dos valores das grandezas obtidas.
