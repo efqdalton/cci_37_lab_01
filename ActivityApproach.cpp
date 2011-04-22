@@ -26,8 +26,8 @@
 CLista<CEntity *> *client_queue;
 CLista<CEntity *> *call_queue;
 
-// clerk_free = flag for clerk iddle
-bool clerk_free = true;
+// manager_free = flag for manager iddle
+bool manager_free = true;
 
 class CBank:public CActivity // Call class as a sub class of CActivity
 {
@@ -122,24 +122,24 @@ CStatistics client_wait("output/ClientWait.txt", ADD_FILE),
 
 void CBank::ArriveClient()  // Arrival activity handling
 {
-    double time1,sim_time=executive->SimulationTime();
+    double time1, sim_time = executive->SimulationTime();
 
-    if (activity==ARRIVE && time==sim_time) {
-        CEntity *client=new CEntity();
+    if (activity == ARRIVE && time == sim_time) {
+        CEntity *client = new CEntity();
         CDistribution dist;
 
         // Current client arrival
-        entity->arrive=time;
-        if (_DEBUG_) {
+        entity->arrive = time;
+        if(_DEBUG_){
             printf("Client Arrives %f \n", time);
         }
 
         // Next client arrival time calculation
-        time1=sim_time+dist.Exponential(arrival_mean);
+        time1 = sim_time + dist.Exponential(arrival_mean);
         client->SetActivity(ARRIVE);
 
         // Schedule next client arrival
-        executive->AddActivity(time1,ARRIVE,client);
+        executive->AddActivity(time1, ARRIVE, client);
         client_queue->InserirFim(entity);
 
     }
@@ -159,7 +159,7 @@ void CBank::EndService()  // service End handling
         client_system.Add(entity->end-entity->arrive);
         service_duration.Add(entity->end-entity->start);
 
-        clerk_free=true;
+        manager_free=true;
         delete entity;
     }
 }
@@ -169,7 +169,7 @@ void CBank::StartService()  // service Start handling
     double time1,sim_time=executive->SimulationTime();
     CDistribution dist;
     CEntity *client;
-    if (clerk_free) { // Bank is free
+    if (manager_free) { // Bank is free
         if (!client_queue->EhVazia()) { // There is client in the queue
             // Get client from client queue
             client=(CEntity*)client_queue->ObterInfo();
@@ -184,7 +184,7 @@ void CBank::StartService()  // service Start handling
             // Calculate service ending time
             time1=sim_time+dist.Uniform(min_service,max_service);
             executive->AddActivity(time1,ENDSERVICE,client);
-            clerk_free=false;
+            manager_free=false;
         }
     }
 
@@ -220,7 +220,7 @@ void CBank::StartCall()  // Call start handling
     CDistribution dist;
     CEntity * call;
 
-    if (clerk_free && client_queue->EhVazia() && (!call_queue->EhVazia())) { // Client not is waiting there is call waiting
+    if (manager_free && client_queue->EhVazia() && (!call_queue->EhVazia())) { // Client not is waiting there is call waiting
 
         // Get call from queue
         call=(CEntity *)call_queue->ObterInfo();
@@ -240,8 +240,8 @@ void CBank::StartCall()  // Call start handling
         // Schedule end of conversation time
         executive->AddActivity(time1,ENDCALL,call);
 
-        // clerk is free
-        clerk_free=false;
+        // manager is free
+        manager_free=false;
 
     }
 }
@@ -261,8 +261,8 @@ void CBank::EndCall()  // Call ending handling
         call_system.Add(entity->end-entity->arrive);
         call_duration.Add(entity->end-entity->start);
 
-        // clerk is free
-        clerk_free=true;
+        // manager is free
+        manager_free=true;
         delete entity;
     }
 }
