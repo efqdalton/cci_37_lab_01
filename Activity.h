@@ -1,17 +1,14 @@
 
-
 #ifndef __CACTIVITY__
 #define __CACTIVITY__
 #include "CLista.h"
-
-
 
 class CEntity
 {
     // Entity class is the parent of children classes
 public:
     int activity; // Current activity code
-    double arrive, start, end;	  // Marker for arrival
+    double arrive, start, end;    // Marker for arrival
     // Marker for start and end of activity
     CEntity() {
         activity=0;
@@ -56,8 +53,8 @@ class CActivity
 {
     // CActivity is a node of activity list
 public:
-    double time;	 // time scheduled to activity ocurr
-    int activity;		 // activity code
+    double time;   // time scheduled to activity ocurr
+    int activity;    // activity code
     CEntity *entity; // Entity pointer
 public:
     CActivity() { // activity constructor : Setactivity must be used later
@@ -163,9 +160,9 @@ public :
     virtual void ExecuteActivities() { // Simulation activity execution at time simulation
         CActivity *activ;
         /* double sim_time=SimulationTime();
-        				// Execute all activity at sim_time
+                // Execute all activity at sim_time
          while (sim_time==GetActivityTime())
-        {  activ=GetActivity();		// Get activity at the front of the queue
+        {  activ=GetActivity();   // Get activity at the front of the queue
            activ->ExecuteActivity(); // Call for executing activity method implemented in a subclass
            RemoveActivity();  // Remove activity
 

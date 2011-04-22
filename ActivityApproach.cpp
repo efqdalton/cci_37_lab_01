@@ -12,11 +12,15 @@
 
 // Activity code definition
 #define ARRIVE        1
-#define STARTSERVICE  2
-#define ENDSERVICE    3
+#define STARTMANAGER  2
+#define ENDMANAGER    3
 #define ARRIVECALL    4
 #define STARTCALL     5
 #define ENDCALL       6
+#define STARTATM      7
+#define ENDATM        8
+#define STARTTELLER   9
+#define ENDTELLER     10
 
 
 // CLista.h is a template for linked list class
@@ -25,6 +29,9 @@
 // Client queue and Call queue declaration
 CLista<CEntity *> *client_queue;
 CLista<CEntity *> *call_queue;
+CLista<CEntity *> *manager_queue;
+CLista<CEntity *> *atm_queue;
+CLista<CEntity *> *teller_queue;
 
 // flags for idle
 bool manager_free = true;
@@ -41,9 +48,9 @@ public:
     // Client arrival activity
     void ArriveClient();
     // Client arrival activity
-    void StartService();
+    void StartManager();
     // Client service end activity
-    void EndService();
+    void EndManager();
 
 
     // Call Arrive method
@@ -133,9 +140,7 @@ void CBank::ArriveClient()  // Arrival activity handling
 
         // Current client arrival
         entity->arrive = time;
-        if(_DEBUG_){
-            printf("Client Arrives %f \n", time);
-        }
+        if(_DEBUG_) printf("Client Arrives %f \n", time);
 
         // Next client arrival time calculation
         time1 = sim_time + dist.Exponential(arrival_mean);
@@ -143,53 +148,64 @@ void CBank::ArriveClient()  // Arrival activity handling
 
         // Schedule next client arrival
         executive->AddActivity(time1, ARRIVE, client);
-        client_queue->InserirFim(entity);
+
+        // decide where the client goes
+        double r = dist.Random();
+        if(r < arrival_teller_prob){
+            // // Gambiarra
+            // teller_queue->InserirFim(entity);
+            manager_queue->InserirFim(entity);
+        }else if(r < arrival_teller_prob + arrival_manager_prob){
+            manager_queue->InserirFim(entity);
+        }else{
+            // // Gambiarra
+            // atm_queue->InserirFim(entity);
+            manager_queue->InserirFim(entity);
+        }
 
     }
 }
 
-void CBank::StartService()  // service Start handling
+void CBank::StartManager()  // service Start handling
 {
     double time1, sim_time = executive->SimulationTime();
     CDistribution dist;
     CEntity       *client;
 
-    if (manager_free) { // Manager is free
-        if (!client_queue->EhVazia()) { // There is client in the queue
+    if(manager_free) { // Manager is free
+        if (!manager_queue->EhVazia()) { // There is client in the queue
             // Get client from client queue
-            client=(CEntity*)client_queue->ObterInfo();
-            client_queue->Remover();
-            client->SetActivity(ENDSERVICE);
+            client = (CEntity*) manager_queue->ObterInfo();
+            manager_queue->Remover();
+            client->SetActivity(ENDMANAGER);
             client->start=time;
+
             // Collect statistics on client waiting
             client_wait.Add(client->start-client->arrive);
-            if (_DEBUG_) {
-                printf("Service Starts %f \n", time);
-            }
+            if(_DEBUG_) printf("Service Starts %f \n", time);
+
             // Calculate service ending time
-            time1=sim_time+dist.Uniform(min_service,max_service);
-            executive->AddActivity(time1,ENDSERVICE,client);
-            manager_free=false;
+            time1 = sim_time + dist.Uniform(min_service, max_service);
+            executive->AddActivity(time1, ENDMANAGER, client);
+            manager_free = false;
         }
     }
 
 }
 
-void CBank::EndService()  // service End handling
+void CBank::EndManager()  // service End handling
 {
-    double sim_time=executive->SimulationTime();
+    double sim_time = executive->SimulationTime();
 
+    if (activity == ENDMANAGER && time == sim_time) {
+        if(_DEBUG_) printf("Service Ends %f \n", time);
+        entity->end = time;
 
-    if (activity==ENDSERVICE && time==sim_time) {
-        if (_DEBUG_) {
-            printf("Service Ends %f \n", time);
-        }
-        entity->end=time;
         // Statistical storage of client time in system ans service duration
         client_system.Add(entity->end-entity->arrive);
         service_duration.Add(entity->end-entity->start);
 
-        manager_free=true;
+        manager_free = true;
         delete entity;
     }
 }
@@ -276,9 +292,9 @@ void CBank::ExecuteActivity() // Activity execution
 {
     ArriveClient();  // Arrival of Cliente
     ArriveCall();
-    EndService();// End of Service
+    EndManager();// End of Service
     EndCall();
-    StartService(); // Start Service
+    StartManager(); // Start Service
     StartCall();
 }
 
@@ -312,8 +328,11 @@ int main(int argc, _TCHAR* argv[])
     CEntity *client = new CEntity(); // client
     CEntity *call   = new CEntity();
     executive       = new CBankExecutive();
-    // client_queue    = new CLista<CEntity *>;
-    // call_queue      = new CLista<CEntity *>;
+    client_queue    = new CLista<CEntity *>;
+    call_queue      = new CLista<CEntity *>;
+    manager_queue   = new CLista<CEntity *>;
+    atm_queue       = new CLista<CEntity *>;
+    teller_queue    = new CLista<CEntity *>;
     CDistribution dist;
 
     // Simulation Paramters
