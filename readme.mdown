@@ -719,6 +719,14 @@ Porém pelo fato de toda complexidade ser tratada numa rotina, é importante ter
 chamadas telefônicas, é preciso que a rotina de atendimento ao cliente esteja programada adequadamente, fazendo com que o atendimento não seja realizado se houver chamada telefônica em espera, este tipo
 de raciocínio é sutil, mas causa grandes problemas e é difícil de ser notado.
 
+Assim como o esperado, ambas implementações trouxeram valores muito próximos, como exemplo temos a espera por atendimento no caixa eletrônico para o período de 10 anos:
+por atividade obteve-se 3.494541 mins com desvio padrão de 5.040700 mins, já na abordagem por eventos obteve-se 3.463017 mins com desvio padrão de 5.041185 mins.
+
+Alguns poucos valores apresentaram uma diferença um pouco maior, como a espera por atendimento do gerente no período de 10 anos:
+por atividade obteve-se 40.455321 mins com desvio padrão de 46.037706 mins, já para eventos, obteve-se 35.653974 mins com desvio padrão de 42.199434 mins.
+A primeira vista, estes dados parecem ruins pela distância da ordem de 10%, porém nota-se que o desvio padrão é muito grande, tornando-os compatíveis ainda assim.
+Esse grande desvio padrão é devido a presença de alguns poucos valores muito altos no conjunto de amostras, no caso de atividades, obteve-se um valor máximo de 406.266082 mins e no de eventos um valor máximo de 361.870354, assim variações nesses campos são totalmente compreensíveis e esperadas.
+
 ## Conclusão
 
 Com a realização deste laboratório, pode-se compreender melhor o funcionamento de modelagem de simulações.
