@@ -19,7 +19,54 @@ Bla!
 
 ## Abordagem por Atividades
 
-Bla!
+### Descrição Geral
+
+Usando a modelagem por atividades, foi implementada a classe CBank em C++.
+
+Tal classe trata de todas as atividades realizadas para a simulação do funcionamento de um banco.
+
+Tal classe CBank possui uma entidade CEntity, que pode ser um cliente ou uma chamada, a ser tratada adequadamente por cada atividade.
+
+Assim, foi criado o executor CBankExecutor para gerenciar as atividades CBank.
+
+### Descrição das rotinas
+
+Basicamente, o executor CBankExecutor possui as rotinas básicas para gerenciar a execução da atividades que ele possui.
+Assim sendo, ele executa o time scan e para cada periodo de tempo dado, as atividades são obtidas e executadas.
+
+A execução de cada atividade ocorre através da rotina _ExecuteActivity_, que executa todas as atividades após, onde cada uma checa se deve realizar algo, ou não.
+Estas atividades são: _ArriveClient_, _ArriveCall_, _StartManager_, _EndManager_, _StartCall_, _EndCall_, _StartTeller_, _EndTeller_, _StartATM_ e _EndATM_.
+
+* _ArriveClient_:
+  Trata de enfileirar a chegada de um cliente, e agendar a chegada do próximo.
+
+* _ArriveCall_:
+  Trata de enfileirar a chegada de uma chamada telefônica, e agendar a chegada da próxima.
+
+* _StartManager_:
+  Trata de iniciar a execução do atendimento de um cliente pelo Gerente, agendando o termino do atendimento, se este estiver livre e não houver nenhuma chamada telefônica pendente.
+
+* _EndManager_:
+  Trata de terminar execução do atendimento de clientes pelo Gerente, deixando o Gerente livre para realizar outras tarefas.
+
+* _StartCall_:
+  Trata de iniciar a execução do atendimento de chamada telefônica pelo Gerente, agendando o termino do atendimento, se este estiver livre.
+
+* _EndCall_:
+  Trata de terminar execução do atendimento de chamadas telefônicas pelo Gerente, deixando-o livre para realizar outras tarefas.
+
+* _StartTeller_:
+  Trata de iniciar a execução do atendimento de um cliente pelo Operador de Caixa, agendando o termino do atendimento, se este estiver livre.
+
+* _EndTeller_:
+  Trata de terminar execução do atendimento de cliente pelo Operador de Caixa, deixando-o livre para atender um novo cliente.
+
+* _StartATM_:
+  Trata de iniciar a execução do atendimento de um cliente pelo Caixa Eletrônico, agendando o termino do atendimento, se este estiver livre.
+
+* _EndATM_:
+  Trata de terminar execução do atendimento de cliente pelo Caixa Eletrônico, deixando-o livre para atender um novo cliente.
+  Tal atividade também reencaminha o cliente para próximo atendimento, se necessário (Gerente ou Operador d Caixa).
 
 ## Comparação entre as Abordagens
 
