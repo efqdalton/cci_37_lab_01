@@ -77,6 +77,8 @@ Os arquivos da modelagem por atividades estão em anexo, no arquivo .zip no qual
 * _Statistics.h_: Biblioteca oferecida pelo professor que contém rotinas para o tratamento estatístico dos dados. Tal biblioteca foi ligeiramente modificada para facilitar a realização do laboratório.
 * _CLista_: Biblioteca oferecida pelo professor, que contém a representação de listas usadas pela biblioteca _Activity.h_.
 
+Observação: Para compilar e executar o laboratório, é necessário que exista a pasta output para que as saídas de debug sejam devidamente geradas sem que o programa pare de funcionar.
+
 ### Resultados
 
 A execução desta modelagem para foi feita para os períodos de 6 meses, 1 ano, 2 anos, 5 anos e 10 anos.
