@@ -58,8 +58,8 @@ public:
     void StartTeller();
     void EndTeller();
 
-    // void StartATM();
-    // void EndATM();
+    void StartATM();
+    void EndATM();
 
     void ExecuteActivity();
 };
@@ -168,9 +168,7 @@ void CBank::ArriveClient()  // Arrival activity handling
         }else if(r < arrival_teller_prob + arrival_manager_prob){
             manager_queue->InserirFim(entity);
         }else{
-            // // Gambiarra
-            // atm_queue->InserirFim(entity);
-            manager_queue->InserirFim(entity);
+            atm_queue->InserirFim(entity);
         }
 
     }
@@ -314,7 +312,7 @@ void CBank::StartTeller()
           teller_wait.Add(time - client->start);
           client->start = time;
 
-          if(_DEBUG_) printf("Call Starts %f \n", time);
+          if(_DEBUG_) printf("Teller Starts %f \n", time);
 
           // Calculate call ending time
           time1 = sim_time + dist.NormalLimited(teller_service_mean, teller_service_stddev, min_service, max_service);
@@ -341,7 +339,59 @@ void CBank::EndTeller()
       teller_duration.Add(entity->end - entity->start);
       entity->end = time;
 
-      // manager is free
+      // teller is free
+      teller_free = true;
+      delete entity;
+  }
+}
+
+void CBank::StartATM()
+{
+  double time1, sim_time = executive->SimulationTime();
+  CDistribution dist;
+  CEntity * client;
+
+  if(atm_free){
+      if(!atm_queue->EhVazia()){
+
+          // Get call from queue
+          client = (CEntity *) atm_queue->ObterInfo();
+          atm_queue->Remover();
+          client->SetActivity(STARTATM);
+
+          // Collect stats on call waiting
+          client_wait.Add(time - client->start);
+          atm_wait.Add(time - client->start);
+          client->start = time;
+
+          if(_DEBUG_) printf("ATM Starts %f \n", time);
+
+          // Calculate call ending time
+          time1 = sim_time + dist.NormalLimited(atm_service_mean, atm_service_stddev, min_service, max_service);
+
+          // Schedule end of conversation time
+          executive->AddActivity(time1, ENDATM, client);
+
+          // atm isn't free
+          atm_free = false;
+      }
+  }
+}
+
+void CBank::EndATM()
+{
+  double sim_time = executive->SimulationTime();
+
+  if(activity == ENDATM && time == sim_time){
+
+      if(_DEBUG_) printf("Teller Ends %f \n", time);
+
+      // Statistical storage of c
+      client_system.Add(entity->end - entity->arrive);
+      atm_duration.Add(entity->end - entity->start);
+      entity->end = time;
+
+      // atm is free
       teller_free = true;
       delete entity;
   }
@@ -351,9 +401,13 @@ void CBank::ExecuteActivity() // Activity execution
 {
     ArriveCall();
     ArriveClient();
+
+    EndATM();
     EndTeller();
     EndCall();
     EndManager();
+
+    StartATM();
     StartTeller();
     StartCall();
     StartManager();
