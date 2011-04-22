@@ -29,17 +29,18 @@ CLista<CEntity *> *call_queue;
 // clerk_free = flag for clerk iddle
 bool clerk_free = true;
 
-class CClerk:public CActivity // Call class as a sub class of CActivity
+class CBank:public CActivity // Call class as a sub class of CActivity
 {
 public:
 // attributes for storing arrival time, and start and end conversation time
-    CClerk():CActivity() // Constructor
+    CBank():CActivity() // Constructor
     {}
-    void ArriveClient(); // Client arrival activity
-
-    void StartService(); // Client arrival activity
-
-    void EndService(); // Client service end activity
+    // Client arrival activity
+    void ArriveClient();
+    // Client arrival activity
+    void StartService();
+    // Client service end activity
+    void EndService();
 
 
     // Call Arrive method
@@ -52,16 +53,12 @@ public:
     void ExecuteActivity();
 };
 
-
-
-class CClerkExecutive: CActivityExecutive
+class CBankExecutive: CActivityExecutive
 {
 
 public:
-    CClerkExecutive(): CActivityExecutive()
+    CBankExecutive(): CActivityExecutive()
     {}
-
-
 
     double SimulationTime() {
         return CActivityExecutive::SimulationTime();
@@ -75,8 +72,8 @@ public:
         simulation_end=sim;
     }
 
-    CClerk * GetActivity() { // Get activity in the head of the list
-        return (CClerk *)CActivityExecutive::GetActivity();
+    CBank * GetActivity() { // Get activity in the head of the list
+        return (CBank *)CActivityExecutive::GetActivity();
     }
 
     double TimeScan() { // Get the time of the head of the list
@@ -91,31 +88,29 @@ public:
         CActivityExecutive::AddActivity( tim, act, ent);
     }
 
-
     void RemoveActivity() { // Remove the activity in the head of the queue
         CActivityExecutive::RemoveActivity();
     }
 
     void ExecuteActivities() { // Simulation activity execution at time simulation
-        CClerk *activ;
+        CBank *activ;
         double sim_time=SimulationTime();
+
         // Execute all activity at sim_time
         while (sim_time==GetActivityTime()) {
             activ=GetActivity();    // Get activity at the front of the queue
             activ->ExecuteActivity(); // Call for executing activity method implemented in a subclass
             RemoveActivity();  // Remove activity
-
         }
     }
-
 };
 
 
-CClerkExecutive *executive;
+CBankExecutive *executive;
 // Simulation paramters
-// double sim_time, call_arrival, arrival_mean, min_service,max_service, min_call, max_call;
-double sim_time;
-double call_arrival, arrival_mean, arrival_manager_prob, arrival_teller_prob, atm_service_mean, atm_service_stddev, teller_service_mean, teller_service_stddev, manager_service_mean, manager_service_stddev, atm_to_teller_prob, atm_to_manager_prob, min_service, max_service, min_call, max_call;
+double sim_time, call_arrival, arrival_mean, min_service,max_service, min_call, max_call;
+// double sim_time;
+// double call_arrival, arrival_mean, arrival_manager_prob, arrival_teller_prob, atm_service_mean, atm_service_stddev, teller_service_mean, teller_service_stddev, manager_service_mean, manager_service_stddev, atm_to_teller_prob, atm_to_manager_prob, min_service, max_service, min_call, max_call;
 
 // Statistical repository
 CStatistics client_wait("output/ClientWait.txt", ADD_FILE),
@@ -125,9 +120,7 @@ CStatistics client_wait("output/ClientWait.txt", ADD_FILE),
             call_duration("output/CallDuration.txt", ADD_FILE),
             service_duration("output/ServiceDuration.txt", ADD_FILE);
 
-
-
-void CClerk::ArriveClient()  // Arrival activity handling
+void CBank::ArriveClient()  // Arrival activity handling
 {
     double time1,sim_time=executive->SimulationTime();
 
@@ -152,7 +145,7 @@ void CClerk::ArriveClient()  // Arrival activity handling
     }
 }
 
-void CClerk::EndService()  // service End handling
+void CBank::EndService()  // service End handling
 {
     double sim_time=executive->SimulationTime();
 
@@ -171,12 +164,12 @@ void CClerk::EndService()  // service End handling
     }
 }
 
-void CClerk::StartService()  // service Start handling
+void CBank::StartService()  // service Start handling
 {
     double time1,sim_time=executive->SimulationTime();
     CDistribution dist;
     CEntity *client;
-    if (clerk_free) { // Clerk is free
+    if (clerk_free) { // Bank is free
         if (!client_queue->EhVazia()) { // There is client in the queue
             // Get client from client queue
             client=(CEntity*)client_queue->ObterInfo();
@@ -197,7 +190,7 @@ void CClerk::StartService()  // service Start handling
 
 }
 
-void CClerk::ArriveCall() // Call arrival handling
+void CBank::ArriveCall() // Call arrival handling
 {
     double time1,sim_time=executive->SimulationTime();
 
@@ -221,7 +214,7 @@ void CClerk::ArriveCall() // Call arrival handling
     }
 }
 
-void CClerk::StartCall()  // Call start handling
+void CBank::StartCall()  // Call start handling
 {
     double time1, sim_time=executive->SimulationTime();
     CDistribution dist;
@@ -253,7 +246,7 @@ void CClerk::StartCall()  // Call start handling
     }
 }
 
-void CClerk::EndCall()  // Call ending handling
+void CBank::EndCall()  // Call ending handling
 {
     double sim_time=executive->SimulationTime();
 
@@ -275,7 +268,7 @@ void CClerk::EndCall()  // Call ending handling
 }
 
 
-void CClerk::ExecuteActivity() // Activity execution
+void CBank::ExecuteActivity() // Activity execution
 {
     ArriveClient();  // Arrival of Cliente
     ArriveCall();
@@ -314,7 +307,7 @@ int main(int argc, _TCHAR* argv[])
     char c;
     CEntity *client = new CEntity(); // client
     CEntity *call   = new CEntity();
-    executive       = new CClerkExecutive();
+    executive       = new CBankExecutive();
     client_queue    = new CLista<CEntity *>;
     call_queue      = new CLista<CEntity *>;
     CDistribution dist;
@@ -329,24 +322,23 @@ int main(int argc, _TCHAR* argv[])
     max_call=1.5; // maximum of uniform distribution
 
 
-    call_arrival           = 10.0;    // call arrival mean - Negative exponential distribution
-    arrival_mean           = 5.0;     // client arrival mean - Negative exponential distribution
-    arrival_manager_prob   = 0.1;
-    arrival_teller_prob    = 0.2;
-    atm_service_mean       = 4.0;
-    atm_service_stddev     = 2.0;
-    teller_service_mean    = 7.0;
-    teller_service_stddev  = 3.0;
-    manager_service_mean   = 10.0;
-    manager_service_stddev = 4.0;
-    atm_to_teller_prob     = 0.15;
-    atm_to_manager_prob    = 0.15;
-    min_service            = 0.2;     // minimum of uniform distribution
-    max_service            = 10000.0; // maximum of uniform distribution
-    min_call               = 1.0;     // minimum of uniform distribution
-    max_call               = 10.0;    // maximum of uniform distribution
-
-    call_max_wait = 10.0;
+    // call_arrival           = 10.0;    // call arrival mean - Negative exponential distribution
+    // arrival_mean           = 5.0;     // client arrival mean - Negative exponential distribution
+    // arrival_manager_prob   = 0.1;
+    // arrival_teller_prob    = 0.2;
+    // atm_service_mean       = 4.0;
+    // atm_service_stddev     = 2.0;
+    // teller_service_mean    = 7.0;
+    // teller_service_stddev  = 3.0;
+    // manager_service_mean   = 10.0;
+    // manager_service_stddev = 4.0;
+    // atm_to_teller_prob     = 0.15;
+    // atm_to_manager_prob    = 0.15;
+    // min_service            = 0.2;     // minimum of uniform distribution
+    // max_service            = 10000.0; // maximum of uniform distribution
+    // min_call               = 1.0;     // minimum of uniform distribution
+    // max_call               = 10.0;    // maximum of uniform distribution
+    // call_max_wait          = 10.0;
 
     // Initial activitys: client arrival and call arrival
 

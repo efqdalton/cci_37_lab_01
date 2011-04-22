@@ -1,3 +1,3 @@
 rm output/*
-g++ ActivityApproach.cpp -o build/activity
+g++ ActivityApproach.cpp -o build/activity -Wno-write-strings
 ./build/activity
