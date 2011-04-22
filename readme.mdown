@@ -635,7 +635,7 @@ Os resultados resumidos de cada período são dados pelas tabelas a seguir:
 Pode-se perceber que em todos os dados, tem-se uma convergência rápida, sendo que eles diferem pouco.
 Isso pode denotar que, a aproximação obtida é boa.
 
-Ainda assim, alguns dos dados apresentam comportamento estranho, como os valores de manager wait (Espera do cliente para atendimento com gerente).
+Ainda assim, alguns dos dados apresentam comportamento estranho, como os valores de _manager wait_ (Espera do cliente para atendimento com gerente).
 Porém este tipo de resultado é facilmente entendido ao olharmos os valores máximos, que são extremamente altos.
 Isso significa que apesar da grande maioria dos valores estarem concentrados perto de valores relativamente baixos, existem valores extremos muito grandes, que fazem com que o desvio padrão seja bem elevado.
 
