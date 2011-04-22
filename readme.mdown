@@ -126,6 +126,17 @@ Estas atividades são: _ArriveClient_, _ArriveCall_, _StartManager_, _EndManager
   Trata de terminar execução do atendimento de cliente pelo Caixa Eletrônico, deixando-o livre para atender um novo cliente.
   Tal atividade também reencaminha o cliente para próximo atendimento, se necessário (Gerente ou Operador d Caixa).
 
+### Listagem do Programa
+
+Os arquivos da modelagem por atividades estão em anexo, no arquivo .zip no qual este relatório foi entregue, a descrição de cada arquivo segue a seguir:
+
+* _ActivityApproach.cpp_: Programa principal, no qual estão descritas as rotinas e classes especificas para a solução do problema na abordagem de atividades.
+* _Activity.h_: Biblioteca oferecida pelo professor para a realização do laboratório, tal biblioteca possui as classes necessárias para a implementação das classes específicas do executor, atividade além de conter a classe CEntity, usda para modelar os clientes e chamadas.
+* _Statistics.h_: Biblioteca oferecida pelo professor que contém rotinas para o tratamento estatístico dos dados. Tal biblioteca foi ligeiramente modificada para facilitar a realização do laboratório.
+* _CLista_: Biblioteca oferecida pelo professor, que contém a representação de listas usadas pela biblioteca _Activity.h_.
+
+Observação: Para compilar e executar o laboratório, é necessário que exista a pasta output para que as saídas de debug sejam devidamente geradas sem que o programa pare de funcionar.
+
 ### Resultados
 
 A execução desta modelagem para foi feita para os períodos de 6 meses, 1 ano, 2 anos, 5 anos e 10 anos.
