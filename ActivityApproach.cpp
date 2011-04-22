@@ -392,7 +392,7 @@ void CBank::EndATM()
       entity->end = time;
 
       // atm is free
-      teller_free = true;
+      atm_free = true;
       delete entity;
   }
 }
