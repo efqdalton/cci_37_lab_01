@@ -261,8 +261,8 @@ void CBank::StartCall()  // Call start handling
 
             // Collect stats on call waiting if doesnt waiting for a long time
             wait_time = call->start - call->arrive;
+            call_wait.Add(wait_time);
             if(wait_time < call_max_wait){
-              call_wait.Add(wait_time);
               call_attended.Add(1.0);
             }else{
               call_attended.Add(0.0);
