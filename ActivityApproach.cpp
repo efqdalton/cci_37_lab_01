@@ -1,35 +1,33 @@
-
 // ActivityApproach.cpp : Defines the entry point for the console application.
 
 #include <stdio.h>
 #define _TCHAR char
 
-
 #include "CLista.h"
-
 #include "Statistics.h"
-
 #include "Activity.h"
+
 // Set _DEBUG_ 1 if you want to see tracing of all Activitys, 0, if not
 #define _DEBUG_ 1
-// Activity code definition
-#define ARRIVE 1
 
-#define STARTSERVICE 2
-#define ENDSERVICE 3
-#define ARRIVECALL 4
-#define STARTCALL 5
-#define ENDCALL 6
+// Activity code definition
+#define ARRIVE        1
+#define STARTSERVICE  2
+#define ENDSERVICE    3
+#define ARRIVECALL    4
+#define STARTCALL     5
+#define ENDCALL       6
+
+
 // CLista.h is a template for linked list class
 #include "CLista.h"
-
-
 
 // Client queue and Call queue declaration
 CLista<CEntity *> *client_queue;
 CLista<CEntity *> *call_queue;
+
 // clerk_free = flag for clerk iddle
-bool clerk_free=true;
+bool clerk_free = true;
 
 class CClerk:public CActivity // Call class as a sub class of CActivity
 {
