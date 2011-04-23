@@ -58,9 +58,8 @@ Cada objeto da classe CClient representa um cliente presencial que entrou no ban
 
 ### Descrição das rotinas
 
-As classes básicas não foram alteradas a partir do exemplo dado em classe.
-
-Blá!
+As classes básicas não foram alteradas a partir do exemplo dado em classe. As classes CCall e CClient implementam a abordagem por eventos, sendo cada método representando um evento,
+ou uma subrotina de um evento. Os eventos são agendados e executados pela classe básica CEventExecutive.
 
 Classe CCall:
 
@@ -123,6 +122,18 @@ Classe CClient:
 
 * _ExecuteEvent_:
   Classe de ajuda para roteamento dos eventos.
+
+
+### Listagem do Programa
+
+Os arquivos da modelagem por atividades estão em anexo, no arquivo .zip no qual este relatório foi entregue, a descrição de cada arquivo segue a seguir:
+
+* _EventApproach.cpp_: Programa principal, no qual estão descritas as rotinas e classes especificas para a solução do problema na abordagem de eventos.
+* _Event.h_: Biblioteca oferecida pelo professor para a realização do laboratório, tal biblioteca possui as classes básicas para a modelagem por eventos.
+* _Statistics.h_: Biblioteca oferecida pelo professor que contém rotinas para o tratamento estatístico dos dados. Tal biblioteca foi ligeiramente modificada para facilitar a realização do laboratório.
+* _CLista_: Biblioteca oferecida pelo professor, que contém a representação de listas usadas nos outros arquivos.
+
+Observação: Para compilar e executar o laboratório, é necessário que exista a pasta output para que as saídas de debug sejam devidamente geradas sem que o programa pare de funcionar.
 
 
 ## Abordagem por Atividades
@@ -913,8 +924,7 @@ Abordagem de atividades
 
 ### Análise dos Resultados
 
-Pode-se perceber que em todos os dados, tem-se uma convergência rápida, sendo que eles diferem pouco.
-Isso pode denotar que a aproximação obtida é boa.
+Pode-se perceber que em todos os dados, tem-se uma convergência rápida, sendo que eles diferem pouco. Isso pode denotar que a aproximação obtida é boa.
 
 Ainda assim, alguns dos dados apresentam comportamento estranho, como os valores de _manager wait_ (Espera do cliente para atendimento com gerente).
 Porém este tipo de resultado é facilmente entendido ao olharmos os valores máximos, que são extremamente altos.
@@ -927,9 +937,14 @@ Adicionar mais uma condição, por exemplo, mais um tipo de cliente que visita o
 diversos pontos do código.
 
 Já na abordagem por atividades tem-se grande facilidade em adicionar novas atividades, basta adicionar uma rotina simples a mais para que cada uma seja tratada adequadamente, com o devido cuidado de fazer as checagens de tipo de atividade e tempo.
-Porém pelo fato de toda complexidade ser tratada numa rotina, é importante ter em mente a existência do acoplamento entre elas, pois por exemplo, ao fazer com que o gerente atenda prioritariamente
-chamadas telefônicas, é preciso que a rotina de atendimento ao cliente esteja programada adequadamente, fazendo com que o atendimento não seja realizado se houver chamada telefônica em espera, este tipo
-de raciocínio é sutil, mas causa grandes problemas e é difícil de ser notado.
+A desvantagem é a grande quantidade de verificações de tipo de atividade e de tempo, presente em praticamente todos os métodos.
+Nesta abordagem, há uma quantidade muito maior de chamadas de métodos, que são descartados nessa verificação. Porém, tais chamadas consomem tempo de programação e de
+processamento.
+
+Em ambos os métodos, nota-se a existência do acoplamento entre as classes, pois por exemplo, ao fazer com que o gerente atenda prioritariamente
+chamadas telefônicas, é preciso que a rotina de atendimento ao cliente esteja programada adequadamente, fazendo com que o atendimento não seja
+realizado se houver chamada telefônica em espera.
+Este tipo de raciocínio é sutil, mas causa grandes problemas e é difícil de ser notado.
 
 Assim como o esperado, ambas implementações trouxeram valores muito próximos, como exemplo temos a espera por atendimento no caixa eletrônico para o período de 10 anos:
 por atividade obteve-se 3.49 mins com desvio padrão de 5.04 mins, já na abordagem por eventos obteve-se 3.46 mins com desvio padrão de 5.04 mins.
@@ -941,8 +956,11 @@ Esse grande desvio padrão é devido a presença de alguns poucos valores muito 
 
 ## Conclusão
 
-Com a realização deste laboratório, pode-se compreender melhor o funcionamento de modelagem de simulações.
+Com a realização deste laboratório, pode-se compreender melhor as possíveis implementações de modelos de simulações.
 
 Os resultados obtidos foram coerentes com o esperado, uma vez que, para abordagens diferentes, foi possível obter valores bem próximos para cada grandeza estudada.
-Em algumas grandezas, o valores não foram tão próximos quanto o esperado, porém tal resultado é facilmente compreendido quando se observa que estes estão dentro da faixa determinada pelo desvio padrão, que nestes casos é bem grande
-devido à existência de alguns poucos valores extremamente altos que fazem com que haja flutuação entre os valores, chegando-se a obtenção de desvios padrões maiores que a média dos valores das grandezas obtidas.
+Em algumas grandezas, o valores não foram tão próximos quanto o esperado, porém tal resultado é facilmente compreendido quando se observa que estes estão 
+dentro da faixa determinada pelo desvio padrão.
+
+Além disso, foi possível comparar as vantagens e desvantagens de cada um dos modelos de simulações utilizado, tornando possível uma escolha mais consciente
+do modelo que será adotado em trabalhos futuros.
