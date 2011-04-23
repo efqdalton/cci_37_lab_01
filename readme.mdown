@@ -930,18 +930,18 @@ A dificuldade da abordagem de eventos é a grande quantidade de casos que precis
 Adicionar mais uma condição, por exemplo, mais um tipo de cliente que visita o gerente, requer alterações em 
 diversos pontos do código.
 
-Já na abordagem por atividades tem-se grande facilidade em adicionar novas atividades, basta adicionar uma rotina simples a mais para que cada uma seja tratada adequadamente.
+Já na abordagem por atividades tem-se grande facilidade em adicionar novas atividades, basta adicionar uma rotina simples a mais para que cada uma seja tratada adequadamente, com o devido cuidado de fazer as checagens de tipo de atividade e tempo.
 Porém pelo fato de toda complexidade ser tratada numa rotina, é importante ter em mente a existência do acoplamento entre elas, pois por exemplo, ao fazer com que o gerente atenda prioritariamente
 chamadas telefônicas, é preciso que a rotina de atendimento ao cliente esteja programada adequadamente, fazendo com que o atendimento não seja realizado se houver chamada telefônica em espera, este tipo
 de raciocínio é sutil, mas causa grandes problemas e é difícil de ser notado.
 
 Assim como o esperado, ambas implementações trouxeram valores muito próximos, como exemplo temos a espera por atendimento no caixa eletrônico para o período de 10 anos:
-por atividade obteve-se 3.494541 mins com desvio padrão de 5.040700 mins, já na abordagem por eventos obteve-se 3.463017 mins com desvio padrão de 5.041185 mins.
+por atividade obteve-se 3.49 mins com desvio padrão de 5.04 mins, já na abordagem por eventos obteve-se 3.46 mins com desvio padrão de 5.04 mins.
 
 Alguns poucos valores apresentaram uma diferença um pouco maior, como a espera por atendimento do gerente no período de 10 anos:
-por atividade obteve-se 40.455321 mins com desvio padrão de 46.037706 mins, já para eventos, obteve-se 35.653974 mins com desvio padrão de 42.199434 mins.
+por atividade obteve-se 40.45 mins com desvio padrão de 46.04 mins, já para eventos, obteve-se 35.65 mins com desvio padrão de 42.20 mins.
 A primeira vista, estes dados parecem ruins pela distância da ordem de 10%, porém nota-se que o desvio padrão é muito grande, tornando-os compatíveis ainda assim.
-Esse grande desvio padrão é devido a presença de alguns poucos valores muito altos no conjunto de amostras, no caso de atividades, obteve-se um valor máximo de 406.266082 mins e no de eventos um valor máximo de 361.870354, assim variações nesses campos são totalmente compreensíveis e esperadas.
+Esse grande desvio padrão é devido a presença de alguns poucos valores muito altos no conjunto de amostras, no caso de atividades, obteve-se um valor máximo de 406.26 mins e no de eventos um valor máximo de 361.87, assim variações nesses campos são totalmente compreensíveis e esperadas.
 
 ## Conclusão
 
