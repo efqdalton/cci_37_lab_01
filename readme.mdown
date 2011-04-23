@@ -13,6 +13,41 @@ Foram escolhidos os modelos de abordagem por eventos e por atividades.
 
 Os detalhes de cada implementação e os resultados obtidos estão devidamente comentados nos itens a seguir.
 
+## Descrição do Problema
+
+A descrição do problema apresentada no roteiro pode ser expressa segundo os diagramas de ciclos apresentados a seguir:
+
+
+![DiagramaCliente](DiagramaCliente.png)
+
+_Diagrama de Ciclos de Cliente_
+
+
+![DiagramaLigação](DiagramaLigacao.png)
+
+_Diagrama de Ciclos de Ligação_
+
+
+![DiagramaATM](DiagramaATM.png)
+
+_Diagrama de Ciclos de Caixa Eletrônico_
+
+
+![DiagramaManager](DiagramaManager.png)
+
+_Diagrama de Ciclos de Gerente_
+
+
+![DiagramaTeller](DiagramaTeller.png)
+
+_Diagrama de Ciclos de Operador de Caixa_
+
+
+![DiagramaIntegrado](DiagramaIntegrado.png)
+
+_Diagrama de Ciclos Integrado_
+
+
 ## Abordagem por Eventos
 
 ### Descrição Geral
