@@ -193,7 +193,10 @@ A execução desta modelagem para foi feita para os períodos de 6 meses, 1 ano,
 
 Os resultados resumidos de cada período são dados pelas tabelas a seguir:
 
-*Simulação para 6 Meses*
+<br/>&nbsp;
+<br/>
+
+#### Simulação para 6 Meses
 
 Abordagem de eventos
 
@@ -206,22 +209,18 @@ Abordagem de eventos
     <th>Valor Mínimo</th>
     <th>Valor Máximo</th>
   </tr>
-
-
-<tr><td>ATM Duration</td><td>8639</td><td>4.139626</td><td>1.856091</td><td>0.201708</td><td>11.671191</td></tr>
-<tr><td>ATM Wait</td><td>8640</td><td>3.615144</td><td>5.233116</td><td>0.000000</td><td>45.755213</td></tr>
-<tr><td>Call Duration</td><td>4856</td><td>5.491084</td><td>2.604546</td><td>1.000275</td><td>9.997803</td></tr>
-<tr><td>Call Wait</td><td>6000</td><td>5.770160</td><td>4.418497</td><td>0.000000</td><td>22.094143</td></tr>
-<tr><td>Call in System</td><td>5999</td><td>9.746281</td><td>3.714657</td><td>1.047243</td><td>19.759047</td></tr>
-<tr><td>Calls Attended</td><td>6000</td><td>0.809500</td><td>0.392728</td><td>0.000000</td><td>1.000000</td></tr>
-<tr><td>Client Wait</td><td>14855</td><td>10.317207</td><td>29.185992</td><td>0.000000</td><td>361.870354</td></tr>
-<tr><td>Client in System</td><td>12290</td><td>19.607746</td><td>33.984445</td><td>0.205717</td><td>393.747934</td></tr>
-<tr><td>Manager Duration</td><td>2582</td><td>10.115257</td><td>3.970364</td><td>0.250733</td><td>24.764223</td></tr>
-<tr><td>Manager Wait</td><td>2582</td><td>42.971469</td><td>58.970911</td><td>0.000000</td><td>361.870354</td></tr>
-<tr><td>Teller Duration</td><td>3633</td><td>7.114611</td><td>2.876479</td><td>0.205717</td><td>16.965734</td></tr>
-<tr><td>Teller Wait</td><td>3633</td><td>3.048428</td><td>5.441702</td><td>0.000000</td><td>51.844464</td></tr>
-
-
+  <tr><td>ATM Duration</td><td>8639</td><td>4.139626</td><td>1.856091</td><td>0.201708</td><td>11.671191</td></tr>
+  <tr><td>ATM Wait</td><td>8640</td><td>3.615144</td><td>5.233116</td><td>0.000000</td><td>45.755213</td></tr>
+  <tr><td>Call Duration</td><td>4856</td><td>5.491084</td><td>2.604546</td><td>1.000275</td><td>9.997803</td></tr>
+  <tr><td>Call Wait</td><td>6000</td><td>5.770160</td><td>4.418497</td><td>0.000000</td><td>22.094143</td></tr>
+  <tr><td>Call in System</td><td>5999</td><td>9.746281</td><td>3.714657</td><td>1.047243</td><td>19.759047</td></tr>
+  <tr><td>Calls Attended</td><td>6000</td><td>0.809500</td><td>0.392728</td><td>0.000000</td><td>1.000000</td></tr>
+  <tr><td>Client Wait</td><td>14855</td><td>10.317207</td><td>29.185992</td><td>0.000000</td><td>361.870354</td></tr>
+  <tr><td>Client in System</td><td>12290</td><td>19.607746</td><td>33.984445</td><td>0.205717</td><td>393.747934</td></tr>
+  <tr><td>Manager Duration</td><td>2582</td><td>10.115257</td><td>3.970364</td><td>0.250733</td><td>24.764223</td></tr>
+  <tr><td>Manager Wait</td><td>2582</td><td>42.971469</td><td>58.970911</td><td>0.000000</td><td>361.870354</td></tr>
+  <tr><td>Teller Duration</td><td>3633</td><td>7.114611</td><td>2.876479</td><td>0.205717</td><td>16.965734</td></tr>
+  <tr><td>Teller Wait</td><td>3633</td><td>3.048428</td><td>5.441702</td><td>0.000000</td><td>51.844464</td></tr>
 </table>
 
 
@@ -334,7 +333,10 @@ Abordagem de atividades
   </tr>
 </table>
 
-*Simulação para 1 Ano*
+<br/>&nbsp;
+<br/>
+
+#### Simulação para 1 Ano
 
 Abordagem de eventos
 
@@ -347,22 +349,18 @@ Abordagem de eventos
     <th>Valor Mínimo</th>
     <th>Valor Máximo</th>
   </tr>
-
-
-<tr><td>ATM Duration</td><td>17039</td><td>4.136116</td><td>1.866040</td><td>0.201708</td><td>11.671191</td></tr>
-<tr><td>ATM Wait</td><td>17039</td><td>3.572752</td><td>5.250746</td><td>0.000000</td><td>45.755213</td></tr>
-<tr><td>Call Duration</td><td>9797</td><td>5.451216</td><td>2.584267</td><td>1.000000</td><td>9.998627</td></tr>
-<tr><td>Call Wait</td><td>12068</td><td>5.701660</td><td>4.406541</td><td>0.000000</td><td>22.094143</td></tr>
-<tr><td>Call in System</td><td>12068</td><td>9.671804</td><td>3.686608</td><td>1.001099</td><td>19.830034</td></tr>
-<tr><td>Calls Attended</td><td>12068</td><td>0.811816</td><td>0.390875</td><td>0.000000</td><td>1.000000</td></tr>
-<tr><td>Client Wait</td><td>29203</td><td>8.837090</td><td>23.547547</td><td>0.000000</td><td>361.870354</td></tr>
-<tr><td>Client in System</td><td>24218</td><td>17.747999</td><td>27.856636</td><td>0.202919</td><td>393.747934</td></tr>
-<tr><td>Manager Duration</td><td>5007</td><td>10.133043</td><td>3.914927</td><td>0.210398</td><td>24.764223</td></tr>
-<tr><td>Manager Wait</td><td>5008</td><td>35.389655</td><td>47.470118</td><td>0.000000</td><td>361.870354</td></tr>
-<tr><td>Teller Duration</td><td>7156</td><td>7.062615</td><td>2.881191</td><td>0.205174</td><td>18.595667</td></tr>
-<tr><td>Teller Wait</td><td>7156</td><td>2.789549</td><td>4.942664</td><td>0.000000</td><td>51.844464</td></tr>
-
-
+  <tr><td>ATM Duration</td><td>17039</td><td>4.136116</td><td>1.866040</td><td>0.201708</td><td>11.671191</td></tr>
+  <tr><td>ATM Wait</td><td>17039</td><td>3.572752</td><td>5.250746</td><td>0.000000</td><td>45.755213</td></tr>
+  <tr><td>Call Duration</td><td>9797</td><td>5.451216</td><td>2.584267</td><td>1.000000</td><td>9.998627</td></tr>
+  <tr><td>Call Wait</td><td>12068</td><td>5.701660</td><td>4.406541</td><td>0.000000</td><td>22.094143</td></tr>
+  <tr><td>Call in System</td><td>12068</td><td>9.671804</td><td>3.686608</td><td>1.001099</td><td>19.830034</td></tr>
+  <tr><td>Calls Attended</td><td>12068</td><td>0.811816</td><td>0.390875</td><td>0.000000</td><td>1.000000</td></tr>
+  <tr><td>Client Wait</td><td>29203</td><td>8.837090</td><td>23.547547</td><td>0.000000</td><td>361.870354</td></tr>
+  <tr><td>Client in System</td><td>24218</td><td>17.747999</td><td>27.856636</td><td>0.202919</td><td>393.747934</td></tr>
+  <tr><td>Manager Duration</td><td>5007</td><td>10.133043</td><td>3.914927</td><td>0.210398</td><td>24.764223</td></tr>
+  <tr><td>Manager Wait</td><td>5008</td><td>35.389655</td><td>47.470118</td><td>0.000000</td><td>361.870354</td></tr>
+  <tr><td>Teller Duration</td><td>7156</td><td>7.062615</td><td>2.881191</td><td>0.205174</td><td>18.595667</td></tr>
+  <tr><td>Teller Wait</td><td>7156</td><td>2.789549</td><td>4.942664</td><td>0.000000</td><td>51.844464</td></tr>
 </table>
 
 
@@ -475,7 +473,10 @@ Abordagem de atividades
   </tr>
 </table>
 
-*Simulação para 2 Anos*
+<br/>&nbsp;
+<br/>
+
+#### Simulação para 2 Anos
 
 Abordagem de eventos
 
@@ -488,22 +489,18 @@ Abordagem de eventos
     <th>Valor Mínimo</th>
     <th>Valor Máximo</th>
   </tr>
-
-
-<tr><td>ATM Duration</td><td>34260</td><td>4.141231</td><td>1.862733</td><td>0.200389</td><td>12.275606</td></tr>
-<tr><td>ATM Wait</td><td>34261</td><td>3.495694</td><td>5.013987</td><td>0.000000</td><td>45.755213</td></tr>
-<tr><td>Call Duration</td><td>19637</td><td>5.474041</td><td>2.586310</td><td>1.000000</td><td>9.998627</td></tr>
-<tr><td>Call Wait</td><td>24171</td><td>5.719821</td><td>4.406592</td><td>0.000000</td><td>22.094143</td></tr>
-<tr><td>Call in System</td><td>24170</td><td>9.706560</td><td>3.687666</td><td>1.001099</td><td>19.883716</td></tr>
-<tr><td>Calls Attended</td><td>24171</td><td>0.812461</td><td>0.390352</td><td>0.000000</td><td>1.000000</td></tr>
-<tr><td>Client Wait</td><td>58706</td><td>8.600135</td><td>21.522326</td><td>0.000000</td><td>361.870354</td></tr>
-<tr><td>Client in System</td><td>48570</td><td>17.498326</td><td>25.728048</td><td>0.202919</td><td>393.747934</td></tr>
-<tr><td>Manager Duration</td><td>9940</td><td>10.118849</td><td>3.878482</td><td>0.210398</td><td>24.764223</td></tr>
-<tr><td>Manager Wait</td><td>9940</td><td>34.525703</td><td>42.464225</td><td>0.000000</td><td>361.870354</td></tr>
-<tr><td>Teller Duration</td><td>14504</td><td>7.071964</td><td>2.878086</td><td>0.205174</td><td>18.595667</td></tr>
-<tr><td>Teller Wait</td><td>14505</td><td>2.890594</td><td>5.001483</td><td>0.000000</td><td>51.844464</td></tr>
-
-
+  <tr><td>ATM Duration</td><td>34260</td><td>4.141231</td><td>1.862733</td><td>0.200389</td><td>12.275606</td></tr>
+  <tr><td>ATM Wait</td><td>34261</td><td>3.495694</td><td>5.013987</td><td>0.000000</td><td>45.755213</td></tr>
+  <tr><td>Call Duration</td><td>19637</td><td>5.474041</td><td>2.586310</td><td>1.000000</td><td>9.998627</td></tr>
+  <tr><td>Call Wait</td><td>24171</td><td>5.719821</td><td>4.406592</td><td>0.000000</td><td>22.094143</td></tr>
+  <tr><td>Call in System</td><td>24170</td><td>9.706560</td><td>3.687666</td><td>1.001099</td><td>19.883716</td></tr>
+  <tr><td>Calls Attended</td><td>24171</td><td>0.812461</td><td>0.390352</td><td>0.000000</td><td>1.000000</td></tr>
+  <tr><td>Client Wait</td><td>58706</td><td>8.600135</td><td>21.522326</td><td>0.000000</td><td>361.870354</td></tr>
+  <tr><td>Client in System</td><td>48570</td><td>17.498326</td><td>25.728048</td><td>0.202919</td><td>393.747934</td></tr>
+  <tr><td>Manager Duration</td><td>9940</td><td>10.118849</td><td>3.878482</td><td>0.210398</td><td>24.764223</td></tr>
+  <tr><td>Manager Wait</td><td>9940</td><td>34.525703</td><td>42.464225</td><td>0.000000</td><td>361.870354</td></tr>
+  <tr><td>Teller Duration</td><td>14504</td><td>7.071964</td><td>2.878086</td><td>0.205174</td><td>18.595667</td></tr>
+  <tr><td>Teller Wait</td><td>14505</td><td>2.890594</td><td>5.001483</td><td>0.000000</td><td>51.844464</td></tr>
 </table>
 
 
@@ -616,7 +613,10 @@ Abordagem de atividades
   </tr>
 </table>
 
-*Simulação para 5 Anos*
+<br/>&nbsp;
+<br/>
+
+#### Simulação para 5 Anos
 
 Abordagem de eventos
 
@@ -629,22 +629,18 @@ Abordagem de eventos
     <th>Valor Mínimo</th>
     <th>Valor Máximo</th>
   </tr>
-
-<tr><td>ATM Duration</td><td>84895</td><td>4.138439</td><td>1.861361</td><td>0.200389</td><td>12.275606</td></tr>
-<tr><td>ATM Wait</td><td>84895</td><td>3.479821</td><td>5.075014</td><td>0.000000</td><td>62.147405</td></tr>
-<tr><td>Call Duration</td><td>48670</td><td>5.492334</td><td>2.588744</td><td>1.000000</td><td>9.999725</td></tr>
-<tr><td>Call Wait</td><td>60075</td><td>5.745037</td><td>4.419408</td><td>0.000000</td><td>22.706387</td></tr>
-<tr><td>Call in System</td><td>60075</td><td>9.726180</td><td>3.680051</td><td>1.001099</td><td>19.957843</td></tr>
-<tr><td>Calls Attended</td><td>60075</td><td>0.810154</td><td>0.392182</td><td>0.000000</td><td>1.000000</td></tr>
-<tr><td>Client Wait</td><td>146342</td><td>8.647497</td><td>21.369220</td><td>0.000000</td><td>361.870354</td></tr>
-<tr><td>Client in System</td><td>121008</td><td>17.575396</td><td>25.599604</td><td>0.200585</td><td>393.747934</td></tr>
-<tr><td>Manager Duration</td><td>24935</td><td>10.091036</td><td>3.882068</td><td>0.203520</td><td>26.212716</td></tr>
-<tr><td>Manager Wait</td><td>24936</td><td>34.698061</td><td>41.688126</td><td>0.000000</td><td>361.870354</td></tr>
-<tr><td>Teller Duration</td><td>36510</td><td>7.075288</td><td>2.882096</td><td>0.201974</td><td>18.609883</td></tr>
-<tr><td>Teller Wait</td><td>36511</td><td>2.871510</td><td>4.956885</td><td>0.000000</td><td>51.844464</td></tr>
-
-
-
+  <tr><td>ATM Duration</td><td>84895</td><td>4.138439</td><td>1.861361</td><td>0.200389</td><td>12.275606</td></tr>
+  <tr><td>ATM Wait</td><td>84895</td><td>3.479821</td><td>5.075014</td><td>0.000000</td><td>62.147405</td></tr>
+  <tr><td>Call Duration</td><td>48670</td><td>5.492334</td><td>2.588744</td><td>1.000000</td><td>9.999725</td></tr>
+  <tr><td>Call Wait</td><td>60075</td><td>5.745037</td><td>4.419408</td><td>0.000000</td><td>22.706387</td></tr>
+  <tr><td>Call in System</td><td>60075</td><td>9.726180</td><td>3.680051</td><td>1.001099</td><td>19.957843</td></tr>
+  <tr><td>Calls Attended</td><td>60075</td><td>0.810154</td><td>0.392182</td><td>0.000000</td><td>1.000000</td></tr>
+  <tr><td>Client Wait</td><td>146342</td><td>8.647497</td><td>21.369220</td><td>0.000000</td><td>361.870354</td></tr>
+  <tr><td>Client in System</td><td>121008</td><td>17.575396</td><td>25.599604</td><td>0.200585</td><td>393.747934</td></tr>
+  <tr><td>Manager Duration</td><td>24935</td><td>10.091036</td><td>3.882068</td><td>0.203520</td><td>26.212716</td></tr>
+  <tr><td>Manager Wait</td><td>24936</td><td>34.698061</td><td>41.688126</td><td>0.000000</td><td>361.870354</td></tr>
+  <tr><td>Teller Duration</td><td>36510</td><td>7.075288</td><td>2.882096</td><td>0.201974</td><td>18.609883</td></tr>
+  <tr><td>Teller Wait</td><td>36511</td><td>2.871510</td><td>4.956885</td><td>0.000000</td><td>51.844464</td></tr>
 </table>
 
 
@@ -757,9 +753,10 @@ Abordagem de atividades
   </tr>
 </table>
 
+<br/>&nbsp;
+<br/>
 
-*Simulação para 10 Anos*
-
+#### Simulação para 10 Anos
 
 Abordagem de eventos
 
@@ -772,22 +769,18 @@ Abordagem de eventos
     <th>Valor Mínimo</th>
     <th>Valor Máximo</th>
   </tr>
-
-
-<tr><td>ATM Duration</td><td>170000</td><td>4.139222</td><td>1.861857</td><td>0.200389</td><td>12.275606</td></tr>
-<tr><td>ATM Wait</td><td>170001</td><td>3.463017</td><td>5.041185</td><td>0.000000</td><td>62.147405</td></tr>
-<tr><td>Call Duration</td><td>97745</td><td>5.499256</td><td>2.595543</td><td>1.000000</td><td>9.999725</td></tr>
-<tr><td>Call Wait</td><td>120626</td><td>5.742840</td><td>4.414164</td><td>0.000000</td><td>25.362012</td></tr>
-<tr><td>Call in System</td><td>120626</td><td>9.731761</td><td>3.687520</td><td>1.001099</td><td>19.957843</td></tr>
-<tr><td>Calls Attended</td><td>120626</td><td>0.810315</td><td>0.392054</td><td>0.000000</td><td>1.000000</td></tr>
-<tr><td>Client Wait</td><td>293180</td><td>8.812452</td><td>21.723697</td><td>0.000000</td><td>361.870354</td></tr>
-<tr><td>Client in System</td><td>242159</td><td>17.800709</td><td>26.021631</td><td>0.200585</td><td>393.747934</td></tr>
-<tr><td>Manager Duration</td><td>49855</td><td>10.097285</td><td>3.876240</td><td>0.203520</td><td>27.549700</td></tr>
-<tr><td>Manager Wait</td><td>49856</td><td>35.653974</td><td>42.199434</td><td>0.000000</td><td>361.870354</td></tr>
-<tr><td>Teller Duration</td><td>73322</td><td>7.091266</td><td>2.879944</td><td>0.201974</td><td>19.403691</td></tr>
-<tr><td>Teller Wait</td><td>73323</td><td>2.964331</td><td>5.174088</td><td>0.000000</td><td>59.846575</td></tr>
-
-
+  <tr><td>ATM Duration</td><td>170000</td><td>4.139222</td><td>1.861857</td><td>0.200389</td><td>12.275606</td></tr>
+  <tr><td>ATM Wait</td><td>170001</td><td>3.463017</td><td>5.041185</td><td>0.000000</td><td>62.147405</td></tr>
+  <tr><td>Call Duration</td><td>97745</td><td>5.499256</td><td>2.595543</td><td>1.000000</td><td>9.999725</td></tr>
+  <tr><td>Call Wait</td><td>120626</td><td>5.742840</td><td>4.414164</td><td>0.000000</td><td>25.362012</td></tr>
+  <tr><td>Call in System</td><td>120626</td><td>9.731761</td><td>3.687520</td><td>1.001099</td><td>19.957843</td></tr>
+  <tr><td>Calls Attended</td><td>120626</td><td>0.810315</td><td>0.392054</td><td>0.000000</td><td>1.000000</td></tr>
+  <tr><td>Client Wait</td><td>293180</td><td>8.812452</td><td>21.723697</td><td>0.000000</td><td>361.870354</td></tr>
+  <tr><td>Client in System</td><td>242159</td><td>17.800709</td><td>26.021631</td><td>0.200585</td><td>393.747934</td></tr>
+  <tr><td>Manager Duration</td><td>49855</td><td>10.097285</td><td>3.876240</td><td>0.203520</td><td>27.549700</td></tr>
+  <tr><td>Manager Wait</td><td>49856</td><td>35.653974</td><td>42.199434</td><td>0.000000</td><td>361.870354</td></tr>
+  <tr><td>Teller Duration</td><td>73322</td><td>7.091266</td><td>2.879944</td><td>0.201974</td><td>19.403691</td></tr>
+  <tr><td>Teller Wait</td><td>73323</td><td>2.964331</td><td>5.174088</td><td>0.000000</td><td>59.846575</td></tr>
 </table>
 
 
@@ -900,7 +893,10 @@ Abordagem de atividades
   </tr>
 </table>
 
-*Descrição dos Campos*:
+<br/>&nbsp;
+<br/>
+
+#### Descrição dos Campos
 
 * _call wait_: Tempo de espera de chamadas
 * _call in system_: Tempo que as chamadas ficam no sistema
